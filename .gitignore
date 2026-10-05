@@ -13,12 +13,15 @@ obj/
 *.xlsx
 
 # Generated Frostbite extraction output
+extracted/
 *.raw
 *.decoded
 *.raw.json
 *_bundles.json
 *_entries.json
 *_scan.json
+*_find.json
+chunk_survey_*.json
 nhl27_ps5_archive_map.json
 nhl27_ps5_catalog_map.json
 contentlaunchsb_chunks.json

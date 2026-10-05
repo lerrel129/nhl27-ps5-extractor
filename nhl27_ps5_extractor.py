@@ -1,17 +1,25 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import ctypes
 import json
 import re
 import struct
+import uuid
+import zlib
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
 PS5_TOC_MAGIC = 0x3C
+PS5_PATCH_TOC_MAGIC = 0x00D1CE01
+PS5_PATCH_TOC_BASE = 0x22C
 HEADER_WORDS = 24
 CONTENTLAUNCH_CATALOG_BASE = 0x1B4
 PS5_INSTALL_PACKAGE_COUNT = 8
+FROSTBITE_BUNDLE_MAGIC = 0x9D798ED6
+DEFAULT_FROSTY_DIR = Path(r"G:\NHL mod\mod\FMT")
 METADATA_FIELDS = (
     "magic",
     "bundle_offset",
@@ -36,6 +44,7 @@ class TocHeader:
     path: str
     size: int
     magic: int
+    base_offset: int
     words: list[int]
     metadata: dict[str, int]
     tables: dict[str, int]
@@ -47,8 +56,20 @@ def package_index_from_catalog(catalog_index: int) -> int:
     return (catalog_index - CONTENTLAUNCH_CATALOG_BASE) % PS5_INSTALL_PACKAGE_COUNT
 
 
+def layer_from_descriptor_word(word: int) -> str:
+    # Bit 16 of the descriptor's leading word selects the Patch CAS layer over the base Data layer.
+    return "Patch" if (word >> 16) & 1 else "Data"
+
+
 def read_toc_header(toc_path: Path, game_root: Path) -> TocHeader:
+    toc_size = toc_path.stat().st_size
     with toc_path.open("rb") as toc_file:
+        signature = toc_file.read(4)
+        if len(signature) != 4:
+            raise ValueError("TOC is shorter than the PS5 header probe.")
+        # Patch TOCs carry a Frosty signature block before the regular PS5 header.
+        base_offset = PS5_PATCH_TOC_BASE if struct.unpack(">I", signature)[0] == PS5_PATCH_TOC_MAGIC else 0
+        toc_file.seek(base_offset)
         raw_header = toc_file.read(HEADER_WORDS * 4)
 
     if len(raw_header) != HEADER_WORDS * 4:
@@ -75,13 +96,14 @@ def read_toc_header(toc_path: Path, game_root: Path) -> TocHeader:
         "chunk_entry_size": chunk_entry_bytes // chunk_count,
         "chunk_entries_end": name_offset,
     }
-    if any(value > toc_path.stat().st_size for key, value in tables.items() if key.endswith("_end")):
+    if any(base_offset + value > toc_size for key, value in tables.items() if key.endswith("_end")):
         raise ValueError("PS5 chunk table extends beyond the TOC file.")
 
     return TocHeader(
         path=toc_path.relative_to(game_root).as_posix(),
-        size=toc_path.stat().st_size,
+        size=toc_size,
         magic=words[0],
+        base_offset=base_offset,
         words=words,
         metadata=metadata,
         tables=tables,
@@ -105,18 +127,19 @@ def read_chunk_descriptors(toc_path: Path, game_root: Path) -> dict[str, object]
     header = read_toc_header(toc_path, game_root)
     metadata = header.metadata
     chunk_count = metadata["chunk_count"]
+    base = header.base_offset
 
     descriptors: list[dict[str, int | str]] = []
     with toc_path.open("rb") as toc_file:
         for index in range(chunk_count):
-            toc_file.seek(metadata["chunk_flag_offset"] + index * 4)
+            toc_file.seek(base + metadata["chunk_flag_offset"] + index * 4)
             flag = struct.unpack(">I", toc_file.read(4))[0]
 
-            toc_file.seek(metadata["chunk_guid_offset"] + index * 20)
+            toc_file.seek(base + metadata["chunk_guid_offset"] + index * 20)
             guid = toc_file.read(16).hex()
             guid_index = struct.unpack(">I", toc_file.read(4))[0]
 
-            toc_file.seek(metadata["chunk_entry_offset"] + index * header.tables["chunk_entry_size"])
+            toc_file.seek(base + metadata["chunk_entry_offset"] + index * header.tables["chunk_entry_size"])
             descriptor = struct.unpack(">4I", toc_file.read(16))
             descriptors.append(
                 {
@@ -125,15 +148,16 @@ def read_chunk_descriptors(toc_path: Path, game_root: Path) -> dict[str, object]
                     "guid": guid,
                     "guid_index": guid_index,
                     "unknown_word": descriptor[0],
+                    "layer": layer_from_descriptor_word(descriptor[0]),
                     "catalog_and_cas": descriptor[1],
                     "cas_offset": descriptor[2],
-                    "size_and_flags": descriptor[3],
-                    "size_low_24": descriptor[3] & 0x00FFFFFF,
+                    "size": descriptor[3],
                 }
             )
 
     return {
         "toc": header.path,
+        "base_offset": base,
         "chunk_count": chunk_count,
         "chunk_entry_size": header.tables["chunk_entry_size"],
         "chunks": descriptors,
@@ -161,19 +185,20 @@ def read_bundle_index(toc_path: Path, game_root: Path) -> dict[str, object]:
     header = read_toc_header(toc_path, game_root)
     metadata = header.metadata
     bundle_count = metadata["bundle_count"]
+    base = header.base_offset
 
     with toc_path.open("rb") as toc_file:
-        toc_file.seek(metadata["name_offset"])
+        toc_file.seek(base + metadata["name_offset"])
         string_data = list(
             struct.unpack(f">{metadata['compressed_string_count']}I", toc_file.read(metadata["compressed_string_count"] * 4))
         )
-        toc_file.seek(metadata["compressed_string_offset"])
+        toc_file.seek(base + metadata["compressed_string_offset"])
         string_table = list(
             struct.unpack(f">{metadata['compressed_string_size']}i", toc_file.read(metadata["compressed_string_size"] * 4))
         )
 
         bundles: list[dict[str, int | str | None]] = []
-        toc_file.seek(metadata["bundle_offset"])
+        toc_file.seek(base + metadata["bundle_offset"])
         for index in range(bundle_count):
             name_bit_offset, size, offset = struct.unpack(">IIQ", toc_file.read(16))
             bundles.append(
@@ -187,6 +212,7 @@ def read_bundle_index(toc_path: Path, game_root: Path) -> dict[str, object]:
 
     return {
         "toc": header.path,
+        "base_offset": base,
         "bundle_count": bundle_count,
         "bundles": bundles,
     }
@@ -200,7 +226,7 @@ def read_bundle_entries_from_index(
         raise ValueError(f"Bundle index must be between 0 and {len(bundles) - 1}.")
 
     bundle = bundles[bundle_index]
-    bundle_offset = int(bundle["offset"])
+    bundle_offset = int(bundle_report["base_offset"]) + int(bundle["offset"])
     with toc_path.open("rb") as toc_file:
         toc_file.seek(bundle_offset)
         header = toc_file.read(36)
@@ -225,22 +251,24 @@ def read_bundle_entries_from_index(
         toc_file.seek(bundle_offset + entry_offset)
         entries: list[dict[str, int]] = []
         catalog_and_cas: int | None = None
+        layer = "Data"
         for index, flag in enumerate(flags):
             unknown_word = None
             if flag:
                 unknown_word, catalog_and_cas = struct.unpack(">II", toc_file.read(8))
+                layer = layer_from_descriptor_word(unknown_word)
             if catalog_and_cas is None:
                 raise ValueError("PS5 bundle entry has no inherited catalog descriptor.")
-            cas_offset, size_and_flags = struct.unpack(">II", toc_file.read(8))
+            cas_offset, size = struct.unpack(">II", toc_file.read(8))
             entries.append(
                 {
                     "index": index,
                     "flag": flag,
                     "unknown_word": unknown_word,
+                    "layer": layer,
                     "catalog_and_cas": catalog_and_cas,
                     "cas_offset": cas_offset,
-                    "size_and_flags": size_and_flags,
-                    "size_low_24": size_and_flags & 0x00FFFFFF,
+                    "size": size,
                 }
             )
 
@@ -256,53 +284,179 @@ def read_bundle_entries(toc_path: Path, game_root: Path, bundle_index: int) -> d
     return read_bundle_entries_from_index(toc_path, read_bundle_index(toc_path, game_root), bundle_index)
 
 
-def extract_contentlaunch_chunk(game_root: Path, chunk_index: int, output_path: Path) -> None:
-    toc_path = game_root / "Data" / "Ps5" / "contentlaunchsb.toc"
-    chunk_report = read_chunk_descriptors(toc_path, game_root)
-    chunks = chunk_report["chunks"]
-    if chunk_index < 0 or chunk_index >= len(chunks):
-        raise ValueError(f"Chunk index must be between 0 and {len(chunks) - 1}.")
-
-    chunk = chunks[chunk_index]
-    catalog_index = int(chunk["catalog_and_cas"]) >> 16
-    cas_index = int(chunk["catalog_and_cas"]) & 0xFFFF
+def resolve_cas_path(game_root: Path, layer: str, catalog_and_cas: int) -> tuple[Path, int, int]:
+    catalog_index = catalog_and_cas >> 16
+    cas_index = catalog_and_cas & 0xFFFF
     package_index = package_index_from_catalog(catalog_index)
-
     cas_path = (
         game_root
-        / "Data"
+        / layer
         / "Ps5"
         / "superbundlelayout"
         / f"nhl_installpackage_{package_index:02d}"
         / f"cas_{cas_index:02d}.cas"
     )
-    offset = int(chunk["cas_offset"])
-    size = int(chunk["size_low_24"])
     if not cas_path.is_file():
         raise FileNotFoundError(f"Mapped CAS file was not found: {cas_path}")
-    if offset + size > cas_path.stat().st_size:
-        raise ValueError("Chunk descriptor exceeds the mapped CAS file bounds.")
+    return cas_path, catalog_index, package_index
 
+
+def read_cas_entry(cas_path: Path, offset: int, size: int) -> bytes:
+    if offset + size > cas_path.stat().st_size:
+        raise ValueError(f"Entry at {offset}+{size} exceeds the bounds of {cas_path.name}.")
     with cas_path.open("rb") as cas_file:
         cas_file.seek(offset)
-        raw_chunk = cas_file.read(size)
-    if len(raw_chunk) != size:
-        raise ValueError("Could not read the complete chunk from its CAS file.")
+        data = cas_file.read(size)
+    if len(data) != size:
+        raise ValueError(f"Could not read the complete entry from {cas_path.name}.")
+    return data
 
-    output_path.write_bytes(raw_chunk)
-    metadata_path = output_path.with_suffix(output_path.suffix + ".json")
-    metadata_path.write_text(
-        json.dumps(
-            {
-                "chunk": chunk,
-                "catalog_index": catalog_index,
-                "package_index": package_index,
-                "cas_path": cas_path.relative_to(game_root).as_posix(),
-            },
-            indent=2,
-        ),
-        encoding="utf-8",
+
+def write_entry_with_sidecar(output_path: Path, data: bytes, metadata: dict[str, object]) -> None:
+    output_path.write_bytes(data)
+    output_path.with_suffix(output_path.suffix + ".json").write_text(
+        json.dumps(metadata, indent=2), encoding="utf-8"
     )
+
+
+def extract_toc_chunk(game_root: Path, toc_relative_path: str, chunk_index: int, output_path: Path) -> None:
+    chunk_report = read_chunk_descriptors(game_root / toc_relative_path, game_root)
+    chunks = chunk_report["chunks"]
+    if chunk_index < 0 or chunk_index >= len(chunks):
+        raise ValueError(f"Chunk index must be between 0 and {len(chunks) - 1}.")
+
+    chunk = chunks[chunk_index]
+    cas_path, catalog_index, package_index = resolve_cas_path(
+        game_root, str(chunk["layer"]), int(chunk["catalog_and_cas"])
+    )
+    raw_chunk = read_cas_entry(cas_path, int(chunk["cas_offset"]), int(chunk["size"]))
+    write_entry_with_sidecar(
+        output_path,
+        raw_chunk,
+        {
+            "toc": chunk_report["toc"],
+            "chunk": chunk,
+            "catalog_index": catalog_index,
+            "package_index": package_index,
+            "cas_path": cas_path.relative_to(game_root).as_posix(),
+        },
+    )
+
+
+def extract_all_toc_chunks(
+    game_root: Path, toc_relative_path: str, output_dir: Path, frosty_dir: Path
+) -> dict[str, object]:
+    chunk_report = read_chunk_descriptors(game_root / toc_relative_path, game_root)
+    codecs = CasCodecs(frosty_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    results: list[dict[str, object]] = []
+    for chunk in chunk_report["chunks"]:
+        guid = str(uuid.UUID(bytes_le=bytes.fromhex(str(chunk["guid"]))))
+        record: dict[str, object] = {"index": chunk["index"], "id": guid}
+        try:
+            cas_path, _, _ = resolve_cas_path(game_root, str(chunk["layer"]), int(chunk["catalog_and_cas"]))
+            payload = decode_cas_blocks(read_cas_entry(cas_path, int(chunk["cas_offset"]), int(chunk["size"])), codecs)
+            (output_dir / f"{guid}.chunk").write_bytes(payload)
+            record["size"] = len(payload)
+        except (ValueError, FileNotFoundError, OSError) as error:
+            record["error"] = str(error)
+        results.append(record)
+    report = {
+        "toc": chunk_report["toc"],
+        "extracted": sum(1 for record in results if "size" in record),
+        "failed": sum(1 for record in results if "error" in record),
+        "chunks": results,
+    }
+    (output_dir / "chunks_manifest.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
+
+
+def flatten_json(value: object, prefix: str = "") -> dict[str, object]:
+    flat: dict[str, object] = {}
+    if isinstance(value, dict):
+        for key, child in value.items():
+            flat.update(flatten_json(child, f"{prefix}{key}."))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            flat.update(flatten_json(child, f"{prefix}{index}."))
+    else:
+        flat[prefix.rstrip(".")] = value
+    return flat
+
+
+def export_player_database(game_root: Path, output_dir: Path, frosty_dir: Path) -> dict[str, object]:
+    """Decodes the loose globals chunks and exports the per-player JSON documents as one database."""
+    layers = [("Data", "Data/Ps5/globals.toc"), ("Patch", "Patch/Ps5/globals.toc")]
+    codecs = CasCodecs(frosty_dir)
+    players: dict[str, dict[str, object]] = {}
+    documents: dict[str, list[dict[str, object]]] = {}
+    for layer, toc_relative_path in layers:
+        toc_path = game_root / toc_relative_path
+        if not toc_path.is_file():
+            continue
+        for chunk in read_chunk_descriptors(toc_path, game_root)["chunks"]:
+            try:
+                cas_path, _, _ = resolve_cas_path(game_root, str(chunk["layer"]), int(chunk["catalog_and_cas"]))
+                raw = read_cas_entry(cas_path, int(chunk["cas_offset"]), int(chunk["size"]))
+                # Peek past the 8-byte CAS block header before paying for a full decode.
+                if not raw[8:12].lstrip().startswith((b"{", b"[")):
+                    continue
+                payload = decode_cas_blocks(raw, codecs)
+                document = json.loads(payload)
+            except (ValueError, FileNotFoundError, json.JSONDecodeError):
+                continue
+            guid = str(uuid.UUID(bytes_le=bytes.fromhex(str(chunk["guid"]))))
+            if isinstance(document, dict) and "Attribute" in document and "Appearance" in document:
+                # Patch chunks override base chunks that share the same GUID.
+                players[guid] = {"chunk_id": guid, "layer": layer, **document}
+            else:
+                kind = next(iter(document)) if isinstance(document, dict) and document else "list"
+                documents.setdefault(str(kind), []).append({"chunk_id": guid, "layer": layer, "size": len(payload)})
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "players.json").write_text(json.dumps(list(players.values()), indent=1), encoding="utf-8")
+
+    rows = [flatten_json({key: value for key, value in player.items() if key in ("chunk_id", "layer", "Attribute", "Ai")}) for player in players.values()]
+    columns: list[str] = []
+    for row in rows:
+        for key in row:
+            if key not in columns:
+                columns.append(key)
+    with (output_dir / "players.csv").open("w", encoding="utf-8", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+    summary = {
+        "player_count": len(players),
+        "other_documents": {kind: len(items) for kind, items in documents.items()},
+        "columns": columns,
+    }
+    (output_dir / "summary.json").write_text(json.dumps({**summary, "documents": documents}, indent=2), encoding="utf-8")
+    return summary
+
+
+def survey_toc_chunks(game_root: Path, toc_relative_path: str, probe_bytes: int = 16) -> dict[str, object]:
+    """Classifies loose TOC chunks by the first decoded bytes to spot databases, images and audio."""
+    chunk_report = read_chunk_descriptors(game_root / toc_relative_path, game_root)
+    codecs = CasCodecs(DEFAULT_FROSTY_DIR)
+    signatures: dict[str, dict[str, object]] = {}
+    for chunk in chunk_report["chunks"]:
+        try:
+            cas_path, _, _ = resolve_cas_path(game_root, str(chunk["layer"]), int(chunk["catalog_and_cas"]))
+            # Only the first CAS block is needed to read the leading bytes.
+            head = read_cas_entry(cas_path, int(chunk["cas_offset"]), min(int(chunk["size"]), 0x10008))
+            decoded = decode_cas_blocks(head[: 8 + (struct.unpack_from(">H", head, 6)[0] + ((head[5] & 0x0F) << 16))], codecs)
+        except (ValueError, FileNotFoundError, IndexError, struct.error):
+            continue
+        key = decoded[:probe_bytes].hex()
+        bucket = signatures.setdefault(key, {"count": 0, "total_size": 0, "ascii": decoded[:probe_bytes].decode("ascii", errors="replace"), "examples": []})
+        bucket["count"] = int(bucket["count"]) + 1
+        bucket["total_size"] = int(bucket["total_size"]) + int(chunk["size"])
+        if len(bucket["examples"]) < 3:
+            bucket["examples"].append({"index": chunk["index"], "size": chunk["size"]})
+    ordered = sorted(signatures.items(), key=lambda item: -int(item[1]["count"]))
+    return {"toc": chunk_report["toc"], "chunk_count": chunk_report["chunk_count"], "signatures": dict(ordered)}
 
 
 def extract_bundle_entry(
@@ -318,46 +472,183 @@ def extract_bundle_entry(
         raise ValueError(f"Entry index must be between 0 and {len(entries) - 1}.")
 
     entry = entries[entry_index]
-    catalog_index = int(entry["catalog_and_cas"]) >> 16
-    cas_index = int(entry["catalog_and_cas"]) & 0xFFFF
-    package_index = package_index_from_catalog(catalog_index)
-
-    cas_path = (
-        game_root
-        / "Data"
-        / "Ps5"
-        / "superbundlelayout"
-        / f"nhl_installpackage_{package_index:02d}"
-        / f"cas_{cas_index:02d}.cas"
+    cas_path, catalog_index, package_index = resolve_cas_path(
+        game_root, str(entry["layer"]), int(entry["catalog_and_cas"])
     )
-    offset = int(entry["cas_offset"])
-    size = int(entry["size_low_24"])
-    if not cas_path.is_file():
-        raise FileNotFoundError(f"Mapped CAS file was not found: {cas_path}")
-    if offset + size > cas_path.stat().st_size:
-        raise ValueError("Bundle entry exceeds the mapped CAS file bounds.")
+    raw_asset = read_cas_entry(cas_path, int(entry["cas_offset"]), int(entry["size"]))
+    write_entry_with_sidecar(
+        output_path,
+        raw_asset,
+        {
+            "toc": entries_report["toc"],
+            "bundle": entries_report["bundle"],
+            "entry": entry,
+            "catalog_index": catalog_index,
+            "package_index": package_index,
+            "cas_path": cas_path.relative_to(game_root).as_posix(),
+        },
+    )
 
-    with cas_path.open("rb") as cas_file:
-        cas_file.seek(offset)
-        raw_asset = cas_file.read(size)
-    if len(raw_asset) != size:
-        raise ValueError("Could not read the complete bundle asset from its CAS file.")
 
-    output_path.write_bytes(raw_asset)
-    output_path.with_suffix(output_path.suffix + ".json").write_text(
-        json.dumps(
+def read_c_string(data: bytes, offset: int) -> str:
+    end = data.find(b"\0", offset)
+    if end < 0:
+        raise ValueError("Bundle string table is not null-terminated.")
+    return data[offset:end].decode("utf-8", errors="replace")
+
+
+def parse_frostbite_bundle(data: bytes) -> dict[str, object]:
+    if len(data) < 36:
+        raise ValueError("Frostbite bundle is shorter than its header.")
+    magic = struct.unpack_from("<I", data, 4)[0]
+    if magic != FROSTBITE_BUNDLE_MAGIC:
+        raise ValueError(f"Unsupported Frostbite bundle magic 0x{magic:08X}.")
+
+    total_count, ebx_count, res_count, chunk_count, strings_offset, meta_offset, meta_size = struct.unpack_from(
+        "<7I", data, 8
+    )
+    if total_count != ebx_count + res_count + chunk_count:
+        raise ValueError("Frostbite bundle asset counts are inconsistent.")
+    # All bundle offsets are relative to the end of the leading 4-byte size field.
+    base = 4
+    strings_base = base + strings_offset
+    if strings_base > len(data) or base + meta_offset + meta_size > len(data):
+        raise ValueError("Frostbite bundle tables extend beyond the bundle data.")
+
+    position = 36 + total_count * 20
+    sha1s = [data[36 + index * 20 : 36 + (index + 1) * 20].hex() for index in range(total_count)]
+
+    ebx: list[dict[str, object]] = []
+    for index in range(ebx_count):
+        name_offset, original_size = struct.unpack_from("<II", data, position)
+        position += 8
+        ebx.append({"name": read_c_string(data, strings_base + name_offset), "original_size": original_size, "sha1": sha1s[index]})
+
+    res: list[dict[str, object]] = []
+    for index in range(res_count):
+        name_offset, original_size = struct.unpack_from("<II", data, position)
+        position += 8
+        res.append(
             {
-                "toc": entries_report["toc"],
-                "bundle": entries_report["bundle"],
-                "entry": entry,
-                "catalog_index": catalog_index,
-                "package_index": package_index,
-                "cas_path": cas_path.relative_to(game_root).as_posix(),
-            },
-            indent=2,
-        ),
-        encoding="utf-8",
+                "name": read_c_string(data, strings_base + name_offset),
+                "original_size": original_size,
+                "sha1": sha1s[ebx_count + index],
+            }
+        )
+    for entry in res:
+        entry["res_type"] = struct.unpack_from("<I", data, position)[0]
+        position += 4
+    for entry in res:
+        entry["res_meta"] = data[position : position + 16].hex()
+        position += 16
+    for entry in res:
+        entry["res_rid"] = struct.unpack_from("<Q", data, position)[0]
+        position += 8
+
+    chunks: list[dict[str, object]] = []
+    for index in range(chunk_count):
+        guid = uuid.UUID(bytes_le=data[position : position + 16])
+        logical_offset, logical_size = struct.unpack_from("<II", data, position + 16)
+        position += 24
+        chunks.append(
+            {
+                "id": str(guid),
+                "logical_offset": logical_offset,
+                "logical_size": logical_size,
+                "sha1": sha1s[ebx_count + res_count + index],
+            }
+        )
+
+    return {
+        "total_count": total_count,
+        "ebx_count": ebx_count,
+        "res_count": res_count,
+        "chunk_count": chunk_count,
+        "ebx": ebx,
+        "res": res,
+        "chunks": chunks,
+    }
+
+
+def safe_asset_path(root: Path, name: str, suffix: str) -> Path:
+    cleaned = re.sub(r"[^A-Za-z0-9_./-]", "_", name).strip("/")
+    parts = [part for part in cleaned.split("/") if part not in ("", ".", "..")]
+    if not parts:
+        raise ValueError(f"Asset name {name!r} does not yield a usable path.")
+    parts[-1] += suffix
+    return root.joinpath(*parts)
+
+
+def extract_bundle(
+    game_root: Path,
+    toc_relative_path: str,
+    bundle_index: int,
+    output_dir: Path,
+    frosty_dir: Path,
+) -> dict[str, object]:
+    entries_report = read_bundle_entries(game_root / toc_relative_path, game_root, bundle_index)
+    entries = entries_report["entries"]
+    manifest_entry = entries[0]
+    cas_path, _, _ = resolve_cas_path(game_root, str(manifest_entry["layer"]), int(manifest_entry["catalog_and_cas"]))
+    manifest = parse_frostbite_bundle(
+        read_cas_entry(cas_path, int(manifest_entry["cas_offset"]), int(manifest_entry["size"]))
     )
+
+    assets: list[tuple[str, Path, dict[str, object]]] = []
+    for asset in manifest["ebx"]:
+        assets.append(("ebx", safe_asset_path(output_dir / "ebx", asset["name"], ".ebx"), asset))
+    for asset in manifest["res"]:
+        assets.append(("res", safe_asset_path(output_dir / "res", asset["name"], f".{asset['res_type']:08x}.res"), asset))
+    for asset in manifest["chunks"]:
+        assets.append(("chunk", output_dir / "chunks" / f"{asset['id']}.chunk", asset))
+
+    if len(entries) != 1 + len(assets):
+        raise ValueError(
+            f"Bundle lists {len(assets)} assets but the TOC map has {len(entries) - 1} payload entries."
+        )
+
+    codecs = CasCodecs(frosty_dir)
+    results: list[dict[str, object]] = []
+    for entry, (kind, target, asset) in zip(entries[1:], assets):
+        record: dict[str, object] = {"kind": kind, "name": asset.get("name", asset.get("id")), "output": None}
+        try:
+            cas_path, _, _ = resolve_cas_path(game_root, str(entry["layer"]), int(entry["catalog_and_cas"]))
+            payload = decode_cas_blocks(read_cas_entry(cas_path, int(entry["cas_offset"]), int(entry["size"])), codecs)
+            expected = asset.get("original_size", asset.get("logical_size"))
+            if expected and len(payload) != expected:
+                record["warning"] = f"Decoded {len(payload)} bytes, bundle expects {expected}."
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(payload)
+            record["output"] = target.relative_to(output_dir).as_posix()
+            record["size"] = len(payload)
+        except (ValueError, FileNotFoundError, OSError) as error:
+            record["error"] = str(error)
+        results.append(record)
+
+    report = {
+        "toc": entries_report["toc"],
+        "bundle": entries_report["bundle"],
+        "manifest": manifest,
+        "extracted": sum(1 for record in results if record["output"]),
+        "failed": sum(1 for record in results if "error" in record),
+        "assets": results,
+    }
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "bundle_manifest.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
+
+
+def find_bundles(toc_path: Path, game_root: Path, search_terms: list[str]) -> dict[str, object]:
+    lowered_terms = [term.lower() for term in search_terms if term]
+    if not lowered_terms:
+        raise ValueError("At least one non-empty search term is required.")
+    bundle_report = read_bundle_index(toc_path, game_root)
+    matches = [
+        bundle
+        for bundle in bundle_report["bundles"]
+        if bundle["name"] and any(term in str(bundle["name"]).lower() for term in lowered_terms)
+    ]
+    return {"toc": bundle_report["toc"], "search_terms": search_terms, "match_count": len(matches), "matches": matches}
 
 
 def scan_bundle_manifests(
@@ -366,77 +657,128 @@ def scan_bundle_manifests(
     search_terms: list[str],
     maximum_manifest_size: int = 2 * 1024 * 1024,
 ) -> dict[str, object]:
-    normalized_terms = [term.encode("ascii").lower() for term in search_terms]
-    if not normalized_terms or any(not term for term in normalized_terms):
-        raise ValueError("At least one non-empty ASCII search term is required.")
+    lowered_terms = [term.lower() for term in search_terms if term]
+    if not lowered_terms:
+        raise ValueError("At least one non-empty search term is required.")
 
-    bundle_report = read_bundle_index(game_root / toc_relative_path, game_root)
+    toc_path = game_root / toc_relative_path
+    bundle_report = read_bundle_index(toc_path, game_root)
     matches: list[dict[str, object]] = []
     scanned_count = 0
-    skipped_count = 0
+    skipped: list[dict[str, object]] = []
     for bundle in bundle_report["bundles"]:
-        bundle_entries = read_bundle_entries_from_index(
-            game_root / toc_relative_path, bundle_report, int(bundle["index"])
-        )
-        first_entry = bundle_entries["entries"][0]
-        size = int(first_entry["size_low_24"])
-        if size > maximum_manifest_size:
-            skipped_count += 1
+        try:
+            first_entry = read_bundle_entries_from_index(toc_path, bundle_report, int(bundle["index"]))["entries"][0]
+            size = int(first_entry["size"])
+            if size > maximum_manifest_size:
+                raise ValueError(f"Manifest of {size} bytes exceeds the scan limit.")
+            cas_path, _, _ = resolve_cas_path(game_root, str(first_entry["layer"]), int(first_entry["catalog_and_cas"]))
+            manifest = parse_frostbite_bundle(read_cas_entry(cas_path, int(first_entry["cas_offset"]), size))
+        except (ValueError, FileNotFoundError) as error:
+            skipped.append({"bundle": bundle, "reason": str(error)})
             continue
 
-        catalog_index = int(first_entry["catalog_and_cas"]) >> 16
-        cas_index = int(first_entry["catalog_and_cas"]) & 0xFFFF
-        try:
-            package_index = package_index_from_catalog(catalog_index)
-        except ValueError:
-            skipped_count += 1
-            continue
-        cas_path = (
-            game_root
-            / "Data"
-            / "Ps5"
-            / "superbundlelayout"
-            / f"nhl_installpackage_{package_index:02d}"
-            / f"cas_{cas_index:02d}.cas"
-        )
-        offset = int(first_entry["cas_offset"])
-        if not cas_path.is_file() or offset + size > cas_path.stat().st_size:
-            skipped_count += 1
-            continue
-        with cas_path.open("rb") as cas_file:
-            cas_file.seek(offset)
-            manifest = cas_file.read(size)
         scanned_count += 1
-        lowered_manifest = manifest.lower()
-        matched_terms = [term.decode("ascii") for term in normalized_terms if term in lowered_manifest]
-        if matched_terms:
-            matches.append(
-                {
-                    "bundle": bundle,
-                    "entry": first_entry,
-                    "cas_path": cas_path.relative_to(game_root).as_posix(),
-                    "matched_terms": matched_terms,
-                }
-            )
+        for kind in ("ebx", "res"):
+            for asset in manifest[kind]:
+                name = str(asset["name"])
+                matched_terms = [term for term in lowered_terms if term in name.lower()]
+                if matched_terms:
+                    matches.append(
+                        {
+                            "bundle_index": bundle["index"],
+                            "bundle_name": bundle["name"],
+                            "kind": kind,
+                            "name": name,
+                            "res_type": asset.get("res_type"),
+                            "matched_terms": matched_terms,
+                        }
+                    )
 
     return {
         "toc": bundle_report["toc"],
         "search_terms": search_terms,
         "maximum_manifest_size": maximum_manifest_size,
         "scanned_bundle_count": scanned_count,
-        "skipped_bundle_count": skipped_count,
+        "skipped_bundle_count": len(skipped),
+        "skipped": skipped,
         "matches": matches,
     }
 
 
-def decode_cas_blocks(raw_chunk: bytes) -> bytes:
+class CasCodecs:
+    """Lazily binds the native decompressors shipped with FMT; stdlib handles zlib."""
+
+    def __init__(self, frosty_dir: Path) -> None:
+        self.frosty_dir = frosty_dir
+        self._zstd: ctypes.CDLL | None = None
+        self._lz4: ctypes.CDLL | None = None
+        self._oodle: ctypes.CDLL | None = None
+
+    def _load(self, relative: str) -> ctypes.CDLL:
+        library_path = self.frosty_dir / relative
+        if not library_path.is_file():
+            raise ValueError(f"Native decompressor is missing: {library_path}")
+        return ctypes.CDLL(str(library_path))
+
+    def zstd(self, payload: bytes, expected_size: int) -> bytes:
+        if self._zstd is None:
+            self._zstd = self._load(r"ThirdParty\libzstd.1.5.0.dll")
+            self._zstd.ZSTD_decompress.restype = ctypes.c_size_t
+            self._zstd.ZSTD_decompress.argtypes = (ctypes.c_void_p, ctypes.c_size_t, ctypes.c_void_p, ctypes.c_size_t)
+            self._zstd.ZSTD_isError.restype = ctypes.c_uint
+            self._zstd.ZSTD_isError.argtypes = (ctypes.c_size_t,)
+        output = ctypes.create_string_buffer(expected_size)
+        produced = self._zstd.ZSTD_decompress(output, expected_size, payload, len(payload))
+        if self._zstd.ZSTD_isError(produced):
+            raise ValueError("Zstd block failed to decompress (it may require a dictionary).")
+        return output.raw[:produced]
+
+    def lz4(self, payload: bytes, expected_size: int) -> bytes:
+        if self._lz4 is None:
+            self._lz4 = self._load(r"ThirdParty\liblz4.so.1.8.0.dll")
+            self._lz4.LZ4_decompress_safe.restype = ctypes.c_int
+            self._lz4.LZ4_decompress_safe.argtypes = (ctypes.c_char_p, ctypes.c_void_p, ctypes.c_int, ctypes.c_int)
+        output = ctypes.create_string_buffer(expected_size)
+        produced = self._lz4.LZ4_decompress_safe(payload, output, len(payload), expected_size)
+        if produced < 0:
+            raise ValueError("LZ4 block failed to decompress.")
+        return output.raw[:produced]
+
+    def oodle(self, payload: bytes, expected_size: int) -> bytes:
+        if self._oodle is None:
+            self._oodle = self._load(r"ThirdParty\Compression\oo2core_9_win64.dll")
+            self._oodle.OodleLZ_Decompress.restype = ctypes.c_ssize_t
+            self._oodle.OodleLZ_Decompress.argtypes = (
+                ctypes.c_char_p, ctypes.c_ssize_t, ctypes.c_void_p, ctypes.c_ssize_t,
+                ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_ssize_t,
+                ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_ssize_t, ctypes.c_int,
+            )
+        output = ctypes.create_string_buffer(expected_size)
+        produced = self._oodle.OodleLZ_Decompress(
+            payload, len(payload), output, expected_size, 1, 0, 0, None, 0, None, None, None, 0, 3
+        )
+        if produced != expected_size:
+            raise ValueError(f"Oodle block produced {produced} of {expected_size} bytes.")
+        return output.raw
+
+
+CAS_COMPRESSION_NONE = 0x00
+CAS_COMPRESSION_ZLIB = 0x02
+CAS_COMPRESSION_LZ4 = 0x09
+CAS_COMPRESSION_ZSTD = 0x0F
+CAS_COMPRESSION_OODLE = 0x11
+
+
+def decode_cas_blocks(raw_chunk: bytes, codecs: CasCodecs | None = None) -> bytes:
+    codecs = codecs or CasCodecs(DEFAULT_FROSTY_DIR)
     decoded = bytearray()
     position = 0
     while position < len(raw_chunk):
         if len(raw_chunk) - position < 8:
             raise ValueError("CAS block has an incomplete 8-byte header.")
 
-        decompressed_size = struct.unpack_from(">I", raw_chunk, position)[0]
+        decompressed_size = struct.unpack_from(">I", raw_chunk, position)[0] & 0x00FFFFFF
         packed_size_and_type = struct.unpack_from("<H", raw_chunk, position + 4)[0]
         compressed_size_high = (packed_size_and_type >> 8) & 0xFF
         compression_type = packed_size_and_type & 0x7F
@@ -448,14 +790,28 @@ def decode_cas_blocks(raw_chunk: bytes) -> bytes:
         data_end = data_start + compressed_size
         if data_end > len(raw_chunk):
             raise ValueError("CAS block payload exceeds the raw chunk bounds.")
-        if compression_type != 0:
-            raise ValueError(
-                f"Unsupported Frostbite CAS compression type {compression_type} at offset {position}."
-            )
-        if compressed_size != decompressed_size:
-            raise ValueError("Uncompressed CAS block size does not match its decoded size.")
+        payload = raw_chunk[data_start:data_end]
 
-        decoded.extend(raw_chunk[data_start:data_end])
+        if compression_type == CAS_COMPRESSION_NONE:
+            if compressed_size != decompressed_size:
+                raise ValueError("Uncompressed CAS block size does not match its decoded size.")
+            block = payload
+        elif compression_type == CAS_COMPRESSION_ZLIB:
+            block = zlib.decompress(payload)
+        elif compression_type == CAS_COMPRESSION_LZ4:
+            block = codecs.lz4(payload, decompressed_size)
+        elif compression_type == CAS_COMPRESSION_ZSTD:
+            block = codecs.zstd(payload, decompressed_size)
+        elif compression_type == CAS_COMPRESSION_OODLE:
+            block = codecs.oodle(payload, decompressed_size)
+        else:
+            raise ValueError(
+                f"Unsupported Frostbite CAS compression type 0x{compression_type:02X} at offset {position}."
+            )
+        if len(block) != decompressed_size:
+            raise ValueError(f"CAS block decoded to {len(block)} bytes, expected {decompressed_size}.")
+
+        decoded.extend(block)
         position = data_end
 
     return bytes(decoded)
@@ -536,9 +892,29 @@ def main() -> None:
         help="Output file for --bundle-entries.",
     )
     parser.add_argument(
+        "--extract-chunk",
+        type=int,
+        help="Export one raw loose chunk from --toc using the PS5 catalog and layer mapping.",
+    )
+    parser.add_argument(
         "--extract-contentlaunch-chunk",
         type=int,
-        help="Export one raw contentlaunchsb chunk using the verified PS5 catalog mapping.",
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "--extract-all-chunks",
+        type=Path,
+        help="Decode every loose chunk of --toc into this directory, named by chunk GUID.",
+    )
+    parser.add_argument(
+        "--chunk-survey",
+        type=Path,
+        help="Write a JSON summary of leading bytes for all loose chunks in --toc.",
+    )
+    parser.add_argument(
+        "--export-player-db",
+        type=Path,
+        help="Export the player database (players.json/players.csv) from the globals chunks into this directory.",
     )
     parser.add_argument(
         "--raw-output",
@@ -569,18 +945,47 @@ def main() -> None:
     parser.add_argument(
         "--decode-raw",
         type=Path,
-        help="Decode uncompressed Frostbite CAS blocks from a raw chunk file.",
+        help="Decode Frostbite CAS blocks (none/zlib/lz4/zstd/oodle) from a raw chunk file.",
     )
     parser.add_argument(
         "--decoded-output",
         type=Path,
         help="Output file for --decode-raw.",
     )
+    parser.add_argument(
+        "--find-bundle",
+        action="append",
+        default=[],
+        help="Case-insensitive substring to match against bundle names in --toc; may be repeated.",
+    )
+    parser.add_argument(
+        "--find-output",
+        type=Path,
+        help="Output JSON for --find-bundle (default: print matches).",
+    )
+    parser.add_argument(
+        "--extract-bundle",
+        type=int,
+        help="Extract every EBX/RES/chunk asset of one bundle from --toc into --extract-dir.",
+    )
+    parser.add_argument(
+        "--extract-dir",
+        type=Path,
+        help="Output directory for --extract-bundle (must be outside the game directory).",
+    )
+    parser.add_argument(
+        "--frosty-dir",
+        type=Path,
+        default=DEFAULT_FROSTY_DIR,
+        help="FMT directory providing libzstd, liblz4 and oo2core native decompressors.",
+    )
     arguments = parser.parse_args()
 
     game_root = arguments.game_root.resolve()
     if not game_root.is_dir():
         parser.error(f"Game root does not exist: {game_root}")
+    if arguments.extract_dir is not None and game_root in arguments.extract_dir.resolve().parents:
+        parser.error("--extract-dir must not be inside the game directory.")
 
     report = inventory_archives(game_root)
     arguments.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -598,7 +1003,23 @@ def main() -> None:
     if arguments.extract_contentlaunch_chunk is not None:
         if arguments.raw_output is None:
             parser.error("--raw-output is required with --extract-contentlaunch-chunk.")
-        extract_contentlaunch_chunk(game_root, arguments.extract_contentlaunch_chunk, arguments.raw_output)
+        extract_toc_chunk(game_root, "Data/Ps5/contentlaunchsb.toc", arguments.extract_contentlaunch_chunk, arguments.raw_output)
+    if arguments.extract_chunk is not None:
+        if arguments.raw_output is None:
+            parser.error("--raw-output is required with --extract-chunk.")
+        extract_toc_chunk(game_root, arguments.toc, arguments.extract_chunk, arguments.raw_output)
+    if arguments.extract_all_chunks is not None:
+        if game_root in arguments.extract_all_chunks.resolve().parents:
+            parser.error("--extract-all-chunks must not be inside the game directory.")
+        chunk_result = extract_all_toc_chunks(game_root, arguments.toc, arguments.extract_all_chunks, arguments.frosty_dir)
+        print(f"Decoded {chunk_result['extracted']} chunks ({chunk_result['failed']} failed) from {chunk_result['toc']}.")
+    if arguments.chunk_survey is not None:
+        arguments.chunk_survey.write_text(json.dumps(survey_toc_chunks(game_root, arguments.toc), indent=2), encoding="utf-8")
+    if arguments.export_player_db is not None:
+        if game_root in arguments.export_player_db.resolve().parents:
+            parser.error("--export-player-db must not be inside the game directory.")
+        db_summary = export_player_database(game_root, arguments.export_player_db, arguments.frosty_dir)
+        print(f"Exported {db_summary['player_count']} players to {arguments.export_player_db}; other documents: {db_summary['other_documents']}.")
     if arguments.extract_bundle_entry is not None:
         if arguments.raw_output is None or arguments.entry_index is None:
             parser.error("--raw-output and --entry-index are required with --extract-bundle-entry.")
@@ -615,7 +1036,27 @@ def main() -> None:
     if arguments.decode_raw:
         if arguments.decoded_output is None:
             parser.error("--decoded-output is required with --decode-raw.")
-        arguments.decoded_output.write_bytes(decode_cas_blocks(arguments.decode_raw.read_bytes()))
+        arguments.decoded_output.write_bytes(
+            decode_cas_blocks(arguments.decode_raw.read_bytes(), CasCodecs(arguments.frosty_dir))
+        )
+    if arguments.find_bundle:
+        found = find_bundles(game_root / arguments.toc, game_root, arguments.find_bundle)
+        if arguments.find_output:
+            arguments.find_output.write_text(json.dumps(found, indent=2), encoding="utf-8")
+        else:
+            for bundle in found["matches"]:
+                print(f"{bundle['index']:6d}  {bundle['name']}")
+        print(f"Matched {found['match_count']} bundles in {found['toc']}.")
+    if arguments.extract_bundle is not None:
+        if arguments.extract_dir is None:
+            parser.error("--extract-dir is required with --extract-bundle.")
+        bundle_result = extract_bundle(
+            game_root, arguments.toc, arguments.extract_bundle, arguments.extract_dir, arguments.frosty_dir
+        )
+        print(
+            f"Extracted {bundle_result['extracted']} assets "
+            f"({bundle_result['failed']} failed) from {bundle_result['bundle']['name']} to {arguments.extract_dir}."
+        )
     print(
         "Inventoried "
         f"{report['supported_toc_count']} PS5 TOCs, "
