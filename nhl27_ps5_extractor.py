@@ -758,6 +758,41 @@ def unswizzle_compressed_mip(width: int, height: int, data: bytes, block_bytes: 
     return bytes(output)
 
 
+def unswizzle_ps5_streamed_fragment(data: bytes, block_bytes: int) -> tuple[int, int, bytes]:
+    """Untiles the complete 512 KiB PS5 streaming fragment used by large character textures."""
+    width, height = 1024, 512
+    block_width, block_height = width // 4, height // 4
+    expected_size = block_width * block_height * block_bytes
+    if len(data) != expected_size:
+        raise ValueError(f"PS5 streamed fragment has {len(data)} bytes; expected {expected_size}.")
+
+    def coordinates(index: int, pattern: str) -> tuple[int, int]:
+        x = y = 0
+        x_bit = y_bit = 1
+        for axis in pattern:
+            if axis == "x":
+                x += (index & 1) * x_bit
+                x_bit *= 2
+            else:
+                y += (index & 1) * y_bit
+                y_bit *= 2
+            index >>= 1
+        return x, y
+
+    output = bytearray(expected_size)
+    source_block = 0
+    for source_macro_tile in range(32 * 16):
+        macro_x, macro_y = coordinates(source_macro_tile, "yxxxxyyyx")
+        for source_block_in_tile in range(64):
+            tile_x, tile_y = coordinates(source_block_in_tile, "yyxxyx")
+            target_block = (macro_y * 8 + tile_y) * block_width + macro_x * 8 + tile_x
+            output[target_block * block_bytes : (target_block + 1) * block_bytes] = data[
+                source_block * block_bytes : (source_block + 1) * block_bytes
+            ]
+            source_block += 1
+    return width, height, bytes(output)
+
+
 def decode_bc1_rgba(width: int, height: int, data: bytes) -> bytes:
     expected_size = max(1, (width + 3) // 4) * max(1, (height + 3) // 4) * 8
     if len(data) != expected_size:
@@ -848,21 +883,34 @@ def convert_frostbite_textures(texture_dir: Path, frosty_dir: Path) -> dict[str,
             chunk_id = str(uuid.UUID(bytes_le=header[0x28:0x38]))
             chunk = (chunk_root / f"{chunk_id}.chunk").read_bytes()
             top_mip_size = max(1, (width + 3) // 4) * max(1, (height + 3) // 4) * block_bytes
-            if len(chunk) < top_mip_size * array_size:
+            streamed_fragment = False
+            if (
+                array_size == 1
+                and flags == 0x801
+                and block_bytes == 16
+                and len(chunk) == 512 * 1024
+                and top_mip_size == len(chunk) * 8
+            ):
+                output_width, output_height, payload = unswizzle_ps5_streamed_fragment(chunk, block_bytes)
+                slices = [payload]
+                streamed_fragment = True
+            elif len(chunk) < top_mip_size * array_size:
                 raise ValueError(
                     f"Chunk has {len(chunk)} bytes; top mip needs {top_mip_size} bytes x {array_size} slices."
                 )
-            slices: list[bytes] = []
-            for slice_index in range(array_size):
-                start = slice_index * top_mip_size
-                payload = chunk[start : start + top_mip_size]
-                if flags == 0x801:
-                    payload = unswizzle_compressed_mip(width, height, payload, block_bytes)
-                slices.append(payload)
+            else:
+                output_width, output_height = width, height
+                slices = []
+                for slice_index in range(array_size):
+                    start = slice_index * top_mip_size
+                    payload = chunk[start : start + top_mip_size]
+                    if flags == 0x801:
+                        payload = unswizzle_compressed_mip(width, height, payload, block_bytes)
+                    slices.append(payload)
             relative = res_path.relative_to(res_root).with_suffix("")
             dds_path = output_root / "dds" / relative.with_suffix(".dds")
             dds_path.parent.mkdir(parents=True, exist_ok=True)
-            dds_path.write_bytes(make_dds_dx10(width, height, dxgi_format, slices))
+            dds_path.write_bytes(make_dds_dx10(output_width, output_height, dxgi_format, slices))
             png_paths: list[str] = []
             png_root = output_root / "png" / relative
             png_root.parent.mkdir(parents=True, exist_ok=True)
@@ -872,7 +920,9 @@ def convert_frostbite_textures(texture_dir: Path, frosty_dir: Path) -> dict[str,
                         f"{png_root.name}_slice_{slice_index:03d}.png" if array_size > 1 else f"{png_root.name}.png"
                     )
                     png_path.parent.mkdir(parents=True, exist_ok=True)
-                    png_path.write_bytes(make_png_rgba(width, height, decode_bc1_rgba(width, height, payload)))
+                    png_path.write_bytes(
+                        make_png_rgba(output_width, output_height, decode_bc1_rgba(output_width, output_height, payload))
+                    )
                     png_paths.append(png_path.relative_to(texture_dir).as_posix())
             else:
                 if not texconv.is_file():
@@ -883,7 +933,7 @@ def convert_frostbite_textures(texture_dir: Path, frosty_dir: Path) -> dict[str,
                     png_path.parent.mkdir(parents=True, exist_ok=True)
                     with tempfile.TemporaryDirectory(prefix="texture_slice_", dir=output_root) as temporary_dir:
                         input_dds = Path(temporary_dir) / f"{png_stem}.dds"
-                        input_dds.write_bytes(make_dds_dx10(width, height, dxgi_format, [payload]))
+                        input_dds.write_bytes(make_dds_dx10(output_width, output_height, dxgi_format, [payload]))
                         conversion = subprocess.run(
                             [str(texconv), "-nologo", "-y", "-ft", "png", "-o", str(png_path.parent), str(input_dds)],
                             capture_output=True,
@@ -898,14 +948,16 @@ def convert_frostbite_textures(texture_dir: Path, frosty_dir: Path) -> dict[str,
                 {
                     "chunk_id": chunk_id,
                     "format": format_name,
-                    "width": width,
-                    "height": height,
+                    "width": output_width,
+                    "height": output_height,
                     "mip_count": 1,
                     "array_size": array_size,
                     "dds": dds_path.relative_to(texture_dir).as_posix(),
                     "png": png_paths,
                 }
             )
+            if streamed_fragment:
+                record["streamed_mip"] = True
         except (OSError, ValueError) as error:
             record["error"] = str(error)
         results.append(record)

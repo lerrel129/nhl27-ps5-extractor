@@ -33,4 +33,4 @@ Patch TOCs (`Patch/Ps5/*.toc`) are supported; each entry's descriptor selects wh
 
 All generated reports, raw asset exports, decoded payloads, models, and build output are excluded from version control. Tools must not write to the game installation directory.
 
-Texture conversion supports BC1 sRGB, BC3 UNORM/sRGB, and BC5 UNORM resources with Frosty's PS4-swizzle flag. DDS files contain the top mip and all array slices; PNG output is written once per slice. BC3/BC5 PNG conversion uses `texconv.exe` from the configured FMT directory.
+Texture conversion supports BC1 sRGB, BC3 UNORM/sRGB, and BC5 UNORM resources with Frosty's PS4-swizzle flag. DDS files contain the top mip and all array slices; PNG output is written once per slice. Large PS5 character textures that contain a complete 512 KiB streamed fragment are exported with the recovered 1024x512 layout and marked `streamed_mip` in `conversion_report.json`; they are not full-resolution top mips. BC3/BC5 PNG conversion uses `texconv.exe` from the configured FMT directory.
