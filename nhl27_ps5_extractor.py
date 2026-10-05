@@ -389,6 +389,7 @@ def export_player_database(game_root: Path, output_dir: Path, frosty_dir: Path) 
     layers = [("Data", "Data/Ps5/globals.toc"), ("Patch", "Patch/Ps5/globals.toc")]
     codecs = CasCodecs(frosty_dir)
     players: dict[str, dict[str, object]] = {}
+    teams: dict[str, dict[str, object]] = {}
     documents: dict[str, list[dict[str, object]]] = {}
     for layer, toc_relative_path in layers:
         toc_path = game_root / toc_relative_path
@@ -409,6 +410,12 @@ def export_player_database(game_root: Path, output_dir: Path, frosty_dir: Path) 
             if isinstance(document, dict) and "Attribute" in document and "Appearance" in document:
                 # Patch chunks override base chunks that share the same GUID.
                 players[guid] = {"chunk_id": guid, "layer": layer, **document}
+            elif (
+                isinstance(document, dict)
+                and isinstance(document.get("GeneralInfo"), dict)
+                and "TeamName" in document["GeneralInfo"]
+            ):
+                teams[guid] = {"chunk_id": guid, "layer": layer, **document}
             else:
                 kind = next(iter(document)) if isinstance(document, dict) and document else "list"
                 documents.setdefault(str(kind), []).append({"chunk_id": guid, "layer": layer, "size": len(payload)})
@@ -464,8 +471,66 @@ def export_player_database(game_root: Path, output_dir: Path, frosty_dir: Path) 
         writer.writerows(ai_rows)
     (output_dir / "ai_skills.json").write_text(json.dumps(ai_rows, indent=1), encoding="utf-8")
 
+    team_rows: list[dict[str, object]] = []
+    team_stats_rows: list[dict[str, object]] = []
+    line_rows: list[dict[str, object]] = []
+    for team in teams.values():
+        info = team["GeneralInfo"]
+        team_identity = {
+            "chunk_id": team["chunk_id"],
+            "layer": team["layer"],
+            "team_id": info.get("Id"),
+            "stock_team_id": info.get("StockTeamId"),
+            "name": info.get("TeamName"),
+            "full_name": info.get("FullName"),
+            "city": info.get("CityName"),
+            "abbreviation": info.get("AbbrName"),
+            "league": info.get("League"),
+            "league_group": info.get("LeagueGroup"),
+            "conference_group": info.get("ConferenceGroup"),
+            "division_group": info.get("DivisionGroup"),
+        }
+        team_rows.append(team_identity)
+        team_stats_rows.append(
+            {
+                **team_identity,
+                **{f"stats_{key}": value for key, value in team.get("Stats", {}).items()},
+                **{f"rank_{key}": value for key, value in team.get("Rank", {}).items()},
+                **{f"streak_{key}": value for key, value in team.get("Streak", {}).items()},
+            }
+        )
+        for line_set in ("DefaultLines", "CurrentLines"):
+            for unit, line_data in team.get(line_set, {}).items():
+                named_lines = line_data.items() if isinstance(line_data, dict) else [("Default", line_data)]
+                for line_name, roster_indices in named_lines:
+                    for slot, roster_index in enumerate(roster_indices):
+                        line_rows.append(
+                            {
+                                **team_identity,
+                                "line_set": line_set,
+                                "unit": unit,
+                                "line": line_name,
+                                "slot": slot + 1,
+                                "roster_index": roster_index,
+                            }
+                        )
+
+    def write_csv(filename: str, values: list[dict[str, object]]) -> None:
+        fieldnames = sorted({key for value in values for key in value})
+        with (output_dir / filename).open("w", encoding="utf-8", newline="") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames, extrasaction="ignore")
+            writer.writeheader()
+            writer.writerows(values)
+
+    write_csv("teams.csv", team_rows)
+    write_csv("team_stats.csv", team_stats_rows)
+    write_csv("team_lines.csv", line_rows)
+    (output_dir / "teams.json").write_text(json.dumps(list(teams.values()), indent=1), encoding="utf-8")
+
     summary = {
         "player_count": len(players),
+        "team_count": len(teams),
+        "team_line_count": len(line_rows),
         "ai_skill_columns": ai_columns,
         "other_documents": {kind: len(items) for kind, items in documents.items()},
         "columns": columns,
@@ -1057,7 +1122,10 @@ def main() -> None:
         if game_root in arguments.export_player_db.resolve().parents:
             parser.error("--export-player-db must not be inside the game directory.")
         db_summary = export_player_database(game_root, arguments.export_player_db, arguments.frosty_dir)
-        print(f"Exported {db_summary['player_count']} players to {arguments.export_player_db}; other documents: {db_summary['other_documents']}.")
+        print(
+            f"Exported {db_summary['player_count']} players, {db_summary['team_count']} team variants, "
+            f"and {db_summary['team_line_count']} lineup slots to {arguments.export_player_db}."
+        )
     if arguments.extract_bundle_entry is not None:
         if arguments.raw_output is None or arguments.entry_index is None:
             parser.error("--raw-output and --entry-index are required with --extract-bundle-entry.")

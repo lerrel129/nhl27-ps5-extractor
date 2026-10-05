@@ -10,8 +10,8 @@ Read-only tools for inspecting and extracting NHL 27 PS5 Frostbite TOC/CAS archi
 ## Usage
 
 ```powershell
-# Player database (8906 players) as players.json / players.csv,
-# plus ai_skills.json / ai_skills.csv for skater and goalie ratings
+# Database export: players.json / players.csv, ai_skills.json / ai_skills.csv,
+# teams.json / teams.csv, team_stats.csv, and team_lines.csv
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --export-player-db .\extracted\player_db
 
 # Find bundles by name, then extract every EBX/RES/chunk asset of one bundle
@@ -24,5 +24,7 @@ python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --toc Data/Ps5/globals.
 ```
 
 Patch TOCs (`Patch/Ps5/*.toc`) are supported; each entry's descriptor selects whether its payload lives in the `Patch` or `Data` CAS layer.
+
+`team_lines.csv` preserves the game roster index for each formation slot. The base loose JSON data does not include the mapping from that index to a player record. Team statistics are stored in the team documents; season statistics for individual players are not part of the base player documents.
 
 All generated reports, raw asset exports, decoded payloads, models, and build output are excluded from version control. Tools must not write to the game installation directory.
