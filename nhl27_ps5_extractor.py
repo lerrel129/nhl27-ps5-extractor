@@ -682,6 +682,204 @@ def safe_asset_path(root: Path, name: str, suffix: str) -> Path:
     return root.joinpath(*parts)
 
 
+def aligned_bc1_mips(width: int, height: int, chunk_size: int) -> list[tuple[int, int, int, int]]:
+    """Returns Frostbite's 256-byte-aligned BC1 mip layout if it exactly fills the chunk."""
+    if width <= 0 or height <= 0:
+        raise ValueError("Texture dimensions must be positive.")
+    mip_layout: list[tuple[int, int, int, int]] = []
+    offset = 0
+    mip_width, mip_height = width, height
+    while True:
+        data_size = max(1, (mip_width + 3) // 4) * max(1, (mip_height + 3) // 4) * 8
+        padded_size = (data_size + 255) & ~255
+        if offset + padded_size > chunk_size:
+            break
+        mip_layout.append((mip_width, mip_height, offset, data_size))
+        offset += padded_size
+        if offset == chunk_size:
+            return mip_layout
+        if mip_width == 1 and mip_height == 1:
+            break
+        mip_width = max(1, mip_width // 2)
+        mip_height = max(1, mip_height // 2)
+    raise ValueError(f"Chunk size {chunk_size} does not match a 256-byte-aligned BC1 mip chain.")
+
+
+def make_dds_bc1(width: int, height: int, mip_data: list[bytes]) -> bytes:
+    flags = 0x00081007  # CAPS | HEIGHT | WIDTH | PIXELFORMAT | LINEARSIZE
+    if len(mip_data) > 1:
+        flags |= 0x00020000  # MIPMAPCOUNT
+    caps = 0x00001000  # TEXTURE
+    if len(mip_data) > 1:
+        caps |= 0x00400008  # MIPMAP | COMPLEX
+    header = struct.pack(
+        "<31I",
+        124,
+        flags,
+        height,
+        width,
+        len(mip_data[0]),
+        0,
+        len(mip_data),
+        *([0] * 11),
+        32,
+        4,
+        int.from_bytes(b"DXT1", "little"),
+        0,
+        0,
+        0,
+        0,
+        0,
+        caps,
+        0,
+        0,
+        0,
+        0,
+    )
+    return b"DDS " + header + b"".join(mip_data)
+
+
+def unswizzle_bc1_mip(width: int, height: int, data: bytes) -> bytes:
+    """Converts PS5's 8x8 Morton-ordered BC1 blocks into row-major block order."""
+    block_width = max(1, (width + 3) // 4)
+    block_height = max(1, (height + 3) // 4)
+    expected_size = block_width * block_height * 8
+    if len(data) != expected_size:
+        raise ValueError(f"BC1 mip has {len(data)} bytes; expected {expected_size}.")
+    tile_width = min(8, block_width)
+    tile_height = min(8, block_height)
+    blocks_per_tile = tile_width * tile_height
+    output = bytearray(len(data))
+
+    def morton_index(x: int, y: int) -> int:
+        result = 0
+        bit = 0
+        while (1 << bit) < max(tile_width, tile_height):
+            result |= ((x >> bit) & 1) << (2 * bit)
+            result |= ((y >> bit) & 1) << (2 * bit + 1)
+            bit += 1
+        return result
+
+    for block_y in range(block_height):
+        for block_x in range(block_width):
+            source_block = (
+                (block_y // tile_height) * (block_width // tile_width) + block_x // tile_width
+            ) * blocks_per_tile + morton_index(block_x % tile_width, block_y % tile_height)
+            target_block = block_y * block_width + block_x
+            output[target_block * 8 : target_block * 8 + 8] = data[source_block * 8 : source_block * 8 + 8]
+    return bytes(output)
+
+
+def decode_bc1_rgba(width: int, height: int, data: bytes) -> bytes:
+    expected_size = max(1, (width + 3) // 4) * max(1, (height + 3) // 4) * 8
+    if len(data) != expected_size:
+        raise ValueError(f"BC1 top mip has {len(data)} bytes; expected {expected_size}.")
+    pixels = bytearray(width * height * 4)
+    offset = 0
+    for block_y in range(0, height, 4):
+        for block_x in range(0, width, 4):
+            color0, color1, selectors = struct.unpack_from("<HHI", data, offset)
+            offset += 8
+
+            def rgb565(color: int) -> tuple[int, int, int]:
+                return (
+                    ((color >> 11) & 0x1F) * 255 // 31,
+                    ((color >> 5) & 0x3F) * 255 // 63,
+                    (color & 0x1F) * 255 // 31,
+                )
+
+            first, second = rgb565(color0), rgb565(color1)
+            palette = [(*first, 255), (*second, 255)]
+            if color0 > color1:
+                palette.extend(
+                    [
+                        tuple((2 * first[index] + second[index]) // 3 for index in range(3)) + (255,),
+                        tuple((first[index] + 2 * second[index]) // 3 for index in range(3)) + (255,),
+                    ]
+                )
+            else:
+                palette.extend(
+                    [
+                        tuple((first[index] + second[index]) // 2 for index in range(3)) + (255,),
+                        (0, 0, 0, 0),
+                    ]
+                )
+            for pixel_y in range(4):
+                for pixel_x in range(4):
+                    output_x, output_y = block_x + pixel_x, block_y + pixel_y
+                    if output_x >= width or output_y >= height:
+                        continue
+                    color = palette[(selectors >> (2 * (pixel_y * 4 + pixel_x))) & 3]
+                    pixel_offset = (output_y * width + output_x) * 4
+                    pixels[pixel_offset : pixel_offset + 4] = bytes(color)
+    return bytes(pixels)
+
+
+def make_png_rgba(width: int, height: int, pixels: bytes) -> bytes:
+    def png_chunk(kind: bytes, data: bytes) -> bytes:
+        return struct.pack(
+            ">I", len(data)
+        ) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xFFFFFFFF)
+
+    rows = b"".join(b"\0" + pixels[index : index + width * 4] for index in range(0, len(pixels), width * 4))
+    return b"\x89PNG\r\n\x1a\n" + png_chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0)) + png_chunk(b"IDAT", zlib.compress(rows, 9)) + png_chunk(b"IEND", b"")
+
+
+def convert_frostbite_textures(texture_dir: Path) -> dict[str, object]:
+    """Converts verified BC1 Frostbite RES/chunk texture pairs into DDS and PNG files."""
+    res_root = texture_dir / "res"
+    chunk_root = texture_dir / "chunks"
+    output_root = texture_dir / "converted"
+    results: list[dict[str, object]] = []
+    for res_path in res_root.rglob("*.res"):
+        record: dict[str, object] = {"resource": res_path.relative_to(texture_dir).as_posix()}
+        try:
+            header = res_path.read_bytes()
+            if len(header) != 184:
+                raise ValueError(f"Expected a 184-byte texture RES header, got {len(header)} bytes.")
+            texture_format = struct.unpack_from("<I", header, 12)[0]
+            if texture_format != 0x37:
+                raise ValueError(f"Unsupported Frostbite texture format enum 0x{texture_format:X}; only BC1 (0x37) is verified.")
+            width, height = struct.unpack_from(">II", header, 0x38)
+            chunk_id = str(uuid.UUID(bytes_le=header[0x28:0x38]))
+            chunk = (chunk_root / f"{chunk_id}.chunk").read_bytes()
+            mip_layout = aligned_bc1_mips(width, height, len(chunk))
+            mips = [
+                unswizzle_bc1_mip(mip_width, mip_height, chunk[offset : offset + size])
+                for mip_width, mip_height, offset, size in mip_layout
+            ]
+            relative = res_path.relative_to(res_root).with_suffix("")
+            dds_path = output_root / "dds" / relative.with_suffix(".dds")
+            png_path = output_root / "png" / relative.with_suffix(".png")
+            dds_path.parent.mkdir(parents=True, exist_ok=True)
+            png_path.parent.mkdir(parents=True, exist_ok=True)
+            dds_path.write_bytes(make_dds_bc1(width, height, mips))
+            png_path.write_bytes(make_png_rgba(width, height, decode_bc1_rgba(width, height, mips[0])))
+            record.update(
+                {
+                    "chunk_id": chunk_id,
+                    "format": "BC1/DXT1",
+                    "width": width,
+                    "height": height,
+                    "mip_count": len(mips),
+                    "dds": dds_path.relative_to(texture_dir).as_posix(),
+                    "png": png_path.relative_to(texture_dir).as_posix(),
+                }
+            )
+        except (OSError, ValueError) as error:
+            record["error"] = str(error)
+        results.append(record)
+    report = {
+        "source": str(texture_dir),
+        "converted": sum(1 for result in results if "dds" in result),
+        "failed": sum(1 for result in results if "error" in result),
+        "textures": results,
+    }
+    output_root.mkdir(parents=True, exist_ok=True)
+    (output_root / "conversion_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
+
+
 def extract_bundle(
     game_root: Path,
     toc_relative_path: str,
@@ -1077,6 +1275,11 @@ def main() -> None:
         help="Output directory for --extract-bundle (must be outside the game directory).",
     )
     parser.add_argument(
+        "--convert-textures",
+        type=Path,
+        help="Convert extracted Frostbite BC1 RES/chunk pairs in this directory into DDS and PNG files.",
+    )
+    parser.add_argument(
         "--frosty-dir",
         type=Path,
         default=DEFAULT_FROSTY_DIR,
@@ -1089,6 +1292,8 @@ def main() -> None:
         parser.error(f"Game root does not exist: {game_root}")
     if arguments.extract_dir is not None and game_root in arguments.extract_dir.resolve().parents:
         parser.error("--extract-dir must not be inside the game directory.")
+    if arguments.convert_textures is not None and game_root in arguments.convert_textures.resolve().parents:
+        parser.error("--convert-textures must not be inside the game directory.")
 
     report = inventory_archives(game_root)
     arguments.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -1162,6 +1367,12 @@ def main() -> None:
         print(
             f"Extracted {bundle_result['extracted']} assets "
             f"({bundle_result['failed']} failed) from {bundle_result['bundle']['name']} to {arguments.extract_dir}."
+        )
+    if arguments.convert_textures is not None:
+        texture_result = convert_frostbite_textures(arguments.convert_textures)
+        print(
+            f"Converted {texture_result['converted']} textures to DDS and PNG "
+            f"({texture_result['failed']} failed) in {arguments.convert_textures}."
         )
     print(
         "Inventoried "

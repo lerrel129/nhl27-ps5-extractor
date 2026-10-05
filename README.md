@@ -14,6 +14,9 @@ Read-only tools for inspecting and extracting NHL 27 PS5 Frostbite TOC/CAS archi
 # teams.json / teams.csv, team_stats.csv, and team_lines.csv
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --export-player-db .\extracted\player_db
 
+# After extracting a texture bundle, convert verified PS5-tiled BC1 texture RES/chunk pairs to DDS and PNG
+python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --convert-textures .\extracted\textures\faces\pyotr_kochetkov
+
 # Find bundles by name, then extract every EBX/RES/chunk asset of one bundle
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --toc Data/Ps5/contentsb.toc --find-bundle nyr/adidas
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --toc Data/Ps5/contentsb.toc --extract-bundle 3 --extract-dir .\extracted\nyr_home
