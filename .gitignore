@@ -1,0 +1,30 @@
+# Python and .NET build artifacts
+__pycache__/
+*.py[cod]
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Model checkpoints and spreadsheets
+*.pth
+*.pt
+*.xlsx
+
+# Generated Frostbite extraction output
+*.raw
+*.decoded
+*.raw.json
+*_bundles.json
+*_entries.json
+*_scan.json
+nhl27_ps5_archive_map.json
+nhl27_ps5_catalog_map.json
+contentlaunchsb_chunks.json
+
+# Local editor and environment settings
+.vscode/
+.vs/
+.venv/
+venv/

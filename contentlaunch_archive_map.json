@@ -1,0 +1,2076 @@
+{
+  "game_root": "F:\\NHL 27\\PPSA34063-app0",
+  "supported_toc_count": 16,
+  "rejected_toc_count": 24,
+  "cas_count": 264,
+  "layout_manifest_paths": [
+    "Ps5/contentlaunchsb",
+    "Ps5/contentsb",
+    "Ps5/globals",
+    "Ps5/globalsfull",
+    "Ps5/levels/game/game",
+    "Ps5/loc/cs",
+    "Ps5/loc/de",
+    "Ps5/loc/en",
+    "Ps5/loc/fi",
+    "Ps5/loc/fr",
+    "Ps5/loc/sv",
+    "Ps5/loc/wc",
+    "Ps5/movies",
+    "Ps5/ui",
+    "Ps5/vanitysb",
+    "Ps5/worldssb",
+    "+superbundlelayout/nhl_installpackage_00/wc",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/wc",
+    "+superbundlelayout/nhl_installpackage_00/cs",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/cs",
+    "+superbundlelayout/nhl_installpackage_00/sv",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/sv",
+    "+superbundlelayout/nhl_installpackage_00/de",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/de",
+    "+superbundlelayout/nhl_installpackage_00/en",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/en",
+    "+superbundlelayout/nhl_installpackage_00/fr",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/fr",
+    "+superbundlelayout/nhl_installpackage_00/fi",
+    "/Ps5/superbundlelayout/nhl_installpackage_00/fi",
+    "(superbundlelayout/nhl_installpackage_00",
+    ",Ps5/superbundlelayout/nhl_installpackage_00",
+    "(superbundlelayout/nhl_installpackage_01",
+    ",Ps5/superbundlelayout/nhl_installpackage_01",
+    "(superbundlelayout/nhl_installpackage_02",
+    ",Ps5/superbundlelayout/nhl_installpackage_02",
+    "(superbundlelayout/nhl_installpackage_03",
+    ",Ps5/superbundlelayout/nhl_installpackage_03",
+    "(superbundlelayout/nhl_installpackage_04",
+    ",Ps5/superbundlelayout/nhl_installpackage_04",
+    "(superbundlelayout/nhl_installpackage_05",
+    ",Ps5/superbundlelayout/nhl_installpackage_05",
+    "(superbundlelayout/nhl_installpackage_06",
+    ",Ps5/superbundlelayout/nhl_installpackage_06",
+    "(superbundlelayout/nhl_installpackage_07",
+    ",Ps5/superbundlelayout/nhl_installpackage_07"
+  ],
+  "toc_headers": [
+    {
+      "path": "Data/Ps5/contentlaunchsb.toc",
+      "size": 11585906,
+      "magic": 60,
+      "words": [
+        60,
+        93464,
+        23350,
+        467064,
+        555188,
+        22031,
+        995808,
+        995808,
+        1348304,
+        995808,
+        88124,
+        4,
+        310118,
+        84,
+        2588776,
+        4294944871,
+        1,
+        4,
+        4294944861,
+        4294944858,
+        1,
+        4294967295,
+        4294944835,
+        4294967295
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 93464,
+        "bundle_count": 23350,
+        "chunk_flag_offset": 467064,
+        "chunk_guid_offset": 555188,
+        "chunk_count": 22031,
+        "chunk_entry_offset": 995808,
+        "unknown_table_offset": 995808,
+        "name_offset": 1348304,
+        "data_offset": 995808,
+        "unknown_count": 88124,
+        "flags": 4,
+        "compressed_string_count": 310118,
+        "compressed_string_size": 84,
+        "compressed_string_offset": 2588776
+      },
+      "tables": {
+        "chunk_flags_end": 555188,
+        "chunk_guids_end": 995808,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 1348304
+      }
+    },
+    {
+      "path": "Data/Ps5/contentsb.toc",
+      "size": 30125291,
+      "magic": 60,
+      "words": [
+        60,
+        338248,
+        84546,
+        1690984,
+        2066636,
+        93913,
+        3944896,
+        3944896,
+        5447504,
+        3944896,
+        375652,
+        4,
+        1474556,
+        76,
+        11345728,
+        4294932392,
+        4294967295,
+        4294932381,
+        1,
+        4294932379,
+        2,
+        8,
+        1,
+        4294932374
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 338248,
+        "bundle_count": 84546,
+        "chunk_flag_offset": 1690984,
+        "chunk_guid_offset": 2066636,
+        "chunk_count": 93913,
+        "chunk_entry_offset": 3944896,
+        "unknown_table_offset": 3944896,
+        "name_offset": 5447504,
+        "data_offset": 3944896,
+        "unknown_count": 375652,
+        "flags": 4,
+        "compressed_string_count": 1474556,
+        "compressed_string_size": 76,
+        "compressed_string_offset": 11345728
+      },
+      "tables": {
+        "chunk_flags_end": 2066636,
+        "chunk_guids_end": 3944896,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 5447504
+      }
+    },
+    {
+      "path": "Data/Ps5/globals.toc",
+      "size": 1432342,
+      "magic": 60,
+      "words": [
+        60,
+        1056,
+        249,
+        5040,
+        57976,
+        13234,
+        322656,
+        322656,
+        534400,
+        322656,
+        52936,
+        4,
+        4029,
+        66,
+        550516,
+        1,
+        4294967295,
+        4294967295,
+        4294967221,
+        4294967295,
+        1,
+        4294967213,
+        4294967191,
+        4
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 1056,
+        "bundle_count": 249,
+        "chunk_flag_offset": 5040,
+        "chunk_guid_offset": 57976,
+        "chunk_count": 13234,
+        "chunk_entry_offset": 322656,
+        "unknown_table_offset": 322656,
+        "name_offset": 534400,
+        "data_offset": 322656,
+        "unknown_count": 52936,
+        "flags": 4,
+        "compressed_string_count": 4029,
+        "compressed_string_size": 66,
+        "compressed_string_offset": 550516
+      },
+      "tables": {
+        "chunk_flags_end": 57976,
+        "chunk_guids_end": 322656,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 534400
+      }
+    },
+    {
+      "path": "Data/Ps5/globalsfull.toc",
+      "size": 280344,
+      "magic": 60,
+      "words": [
+        60,
+        160,
+        24,
+        544,
+        4740,
+        1049,
+        25720,
+        25720,
+        42504,
+        25720,
+        4196,
+        4,
+        176,
+        56,
+        43208,
+        4294967295,
+        1,
+        4294967295,
+        1,
+        4294967295,
+        4294967295,
+        1,
+        4294967295,
+        4294967295
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 160,
+        "bundle_count": 24,
+        "chunk_flag_offset": 544,
+        "chunk_guid_offset": 4740,
+        "chunk_count": 1049,
+        "chunk_entry_offset": 25720,
+        "unknown_table_offset": 25720,
+        "name_offset": 42504,
+        "data_offset": 25720,
+        "unknown_count": 4196,
+        "flags": 4,
+        "compressed_string_count": 176,
+        "compressed_string_size": 56,
+        "compressed_string_offset": 43208
+      },
+      "tables": {
+        "chunk_flags_end": 4740,
+        "chunk_guids_end": 25720,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 42504
+      }
+    },
+    {
+      "path": "Data/Ps5/levels/game/game.toc",
+      "size": 800824,
+      "magic": 60,
+      "words": [
+        60,
+        72,
+        2,
+        104,
+        38424,
+        9580,
+        230024,
+        230024,
+        383304,
+        230024,
+        38320,
+        4,
+        7,
+        34,
+        383332,
+        1,
+        4294967295,
+        0,
+        130,
+        1074159109,
+        0,
+        383539,
+        0,
+        1073741895
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 72,
+        "bundle_count": 2,
+        "chunk_flag_offset": 104,
+        "chunk_guid_offset": 38424,
+        "chunk_count": 9580,
+        "chunk_entry_offset": 230024,
+        "unknown_table_offset": 230024,
+        "name_offset": 383304,
+        "data_offset": 230024,
+        "unknown_count": 38320,
+        "flags": 4,
+        "compressed_string_count": 7,
+        "compressed_string_size": 34,
+        "compressed_string_offset": 383332
+      },
+      "tables": {
+        "chunk_flags_end": 38424,
+        "chunk_guids_end": 230024,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 383304
+      }
+    },
+    {
+      "path": "Data/Ps5/movies.toc",
+      "size": 76068,
+      "magic": 60,
+      "words": [
+        60,
+        1592,
+        382,
+        7704,
+        9396,
+        423,
+        17856,
+        17856,
+        24624,
+        17856,
+        1692,
+        4,
+        4049,
+        74,
+        40820,
+        1,
+        4294967295,
+        4294967029,
+        3,
+        4294967295,
+        4294967054,
+        4294967295,
+        4294967295,
+        4294967295
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 1592,
+        "bundle_count": 382,
+        "chunk_flag_offset": 7704,
+        "chunk_guid_offset": 9396,
+        "chunk_count": 423,
+        "chunk_entry_offset": 17856,
+        "unknown_table_offset": 17856,
+        "name_offset": 24624,
+        "data_offset": 17856,
+        "unknown_count": 1692,
+        "flags": 4,
+        "compressed_string_count": 4049,
+        "compressed_string_size": 74,
+        "compressed_string_offset": 40820
+      },
+      "tables": {
+        "chunk_flags_end": 9396,
+        "chunk_guids_end": 17856,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 24624
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cs/loc/cs.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        891385500,
+        1260829234,
+        4294304781,
+        3365107834,
+        2147483648,
+        2851096904
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/de/loc/de.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        897821385,
+        3836282435,
+        1455129237,
+        2737063798,
+        2147483648,
+        3172112020
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/en/loc/en.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        85863370,
+        892304761,
+        1534481293,
+        2429410776,
+        2147483652,
+        2436808486
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/fi/loc/fi.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        1912497692,
+        3091667109,
+        3784794873,
+        3150961481,
+        2147483648,
+        1911980535
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/fr/loc/fr.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        1,
+        4294967295,
+        1000683578,
+        2986143778,
+        2610304503,
+        1383268192,
+        2147483652,
+        3104936080
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/sv/loc/sv.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        2579508790,
+        4185232723,
+        4173487007,
+        237125233,
+        2147483652,
+        3487360931
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/wc/loc/wc.toc",
+      "size": 144,
+      "magic": 60,
+      "words": [
+        60,
+        64,
+        0,
+        64,
+        72,
+        2,
+        112,
+        112,
+        144,
+        112,
+        8,
+        4,
+        0,
+        0,
+        144,
+        0,
+        4294967295,
+        4294967294,
+        929513319,
+        2976739840,
+        595518624,
+        1214647238,
+        2147483652,
+        2839432932
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 64,
+        "bundle_count": 0,
+        "chunk_flag_offset": 64,
+        "chunk_guid_offset": 72,
+        "chunk_count": 2,
+        "chunk_entry_offset": 112,
+        "unknown_table_offset": 112,
+        "name_offset": 144,
+        "data_offset": 112,
+        "unknown_count": 8,
+        "flags": 4,
+        "compressed_string_count": 0,
+        "compressed_string_size": 0,
+        "compressed_string_offset": 144
+      },
+      "tables": {
+        "chunk_flags_end": 72,
+        "chunk_guids_end": 112,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 144
+      }
+    },
+    {
+      "path": "Data/Ps5/ui.toc",
+      "size": 39487148,
+      "magic": 60,
+      "words": [
+        60,
+        844216,
+        211039,
+        4220840,
+        4610100,
+        97315,
+        6556400,
+        6556400,
+        8113440,
+        6556400,
+        389260,
+        4,
+        2620935,
+        84,
+        18597180,
+        4294804276,
+        4294967295,
+        4294967295,
+        4294804274,
+        4294967295,
+        13,
+        4294804267,
+        4294967295,
+        4294967295
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 844216,
+        "bundle_count": 211039,
+        "chunk_flag_offset": 4220840,
+        "chunk_guid_offset": 4610100,
+        "chunk_count": 97315,
+        "chunk_entry_offset": 6556400,
+        "unknown_table_offset": 6556400,
+        "name_offset": 8113440,
+        "data_offset": 6556400,
+        "unknown_count": 389260,
+        "flags": 4,
+        "compressed_string_count": 2620935,
+        "compressed_string_size": 84,
+        "compressed_string_offset": 18597180
+      },
+      "tables": {
+        "chunk_flags_end": 4610100,
+        "chunk_guids_end": 6556400,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 8113440
+      }
+    },
+    {
+      "path": "Data/Ps5/vanitysb.toc",
+      "size": 1537163,
+      "magic": 60,
+      "words": [
+        60,
+        17872,
+        4453,
+        89120,
+        111488,
+        5592,
+        223328,
+        223328,
+        312800,
+        223328,
+        22368,
+        4,
+        80638,
+        74,
+        635352,
+        4294967295,
+        4294964369,
+        8,
+        4294964370,
+        4294964371,
+        4294964373,
+        4294964374,
+        4294967295,
+        4294967295
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 17872,
+        "bundle_count": 4453,
+        "chunk_flag_offset": 89120,
+        "chunk_guid_offset": 111488,
+        "chunk_count": 5592,
+        "chunk_entry_offset": 223328,
+        "unknown_table_offset": 223328,
+        "name_offset": 312800,
+        "data_offset": 223328,
+        "unknown_count": 22368,
+        "flags": 4,
+        "compressed_string_count": 80638,
+        "compressed_string_size": 74,
+        "compressed_string_offset": 635352
+      },
+      "tables": {
+        "chunk_flags_end": 111488,
+        "chunk_guids_end": 223328,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 312800
+      }
+    },
+    {
+      "path": "Data/Ps5/worldssb.toc",
+      "size": 6981599,
+      "magic": 60,
+      "words": [
+        60,
+        34760,
+        8675,
+        173560,
+        222868,
+        12327,
+        469408,
+        469408,
+        666640,
+        469408,
+        49308,
+        4,
+        102101,
+        82,
+        1075044,
+        17,
+        4294960946,
+        4294967295,
+        4294960971,
+        4294967295,
+        4294960984,
+        4294960986,
+        4294961004,
+        3
+      ],
+      "metadata": {
+        "magic": 60,
+        "bundle_offset": 34760,
+        "bundle_count": 8675,
+        "chunk_flag_offset": 173560,
+        "chunk_guid_offset": 222868,
+        "chunk_count": 12327,
+        "chunk_entry_offset": 469408,
+        "unknown_table_offset": 469408,
+        "name_offset": 666640,
+        "data_offset": 469408,
+        "unknown_count": 49308,
+        "flags": 4,
+        "compressed_string_count": 102101,
+        "compressed_string_size": 82,
+        "compressed_string_offset": 1075044
+      },
+      "tables": {
+        "chunk_flags_end": 222868,
+        "chunk_guids_end": 469408,
+        "chunk_entry_size": 16,
+        "chunk_entries_end": 666640
+      }
+    }
+  ],
+  "rejected_tocs": [
+    {
+      "path": "Data/layout.toc",
+      "reason": "Unsupported TOC magic 0x82C54E01."
+    },
+    {
+      "path": "Data/Ps5/loc/cs.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Data/Ps5/loc/de.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Data/Ps5/loc/en.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Data/Ps5/loc/fi.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Data/Ps5/loc/fr.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Data/Ps5/loc/sv.toc",
+      "reason": "TOC is shorter than the PS5 header probe."
+    },
+    {
+      "path": "Patch/layout.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/contentlaunchsb.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/contentsb.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/globals.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/globalsfull.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/levels/game/game.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/movies.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cs/loc/cs.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/de/loc/de.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/en/loc/en.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/fi/loc/fi.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/fr/loc/fr.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/sv/loc/sv.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/wc/loc/wc.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/ui.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/vanitysb.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    },
+    {
+      "path": "Patch/Ps5/worldssb.toc",
+      "reason": "Unsupported TOC magic 0x00D1CE01."
+    }
+  ],
+  "cas_archives": [
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_01.cas",
+      "size": 1072992256
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_02.cas",
+      "size": 1068486656
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_03.cas",
+      "size": 1073741824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_04.cas",
+      "size": 1073631232
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_05.cas",
+      "size": 1073606656
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_06.cas",
+      "size": 1073680384
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_07.cas",
+      "size": 1073586176
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_08.cas",
+      "size": 1073549312
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_09.cas",
+      "size": 1073737728
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_10.cas",
+      "size": 1072431104
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_11.cas",
+      "size": 1073266688
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_12.cas",
+      "size": 1071214592
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_13.cas",
+      "size": 1073106944
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_14.cas",
+      "size": 1073729536
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_15.cas",
+      "size": 1073618944
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_16.cas",
+      "size": 1073549312
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_17.cas",
+      "size": 1073733632
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_18.cas",
+      "size": 1073631232
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_19.cas",
+      "size": 1071857664
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_20.cas",
+      "size": 1073655808
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_21.cas",
+      "size": 1073307648
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_22.cas",
+      "size": 1073651712
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_23.cas",
+      "size": 1042735104
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_24.cas",
+      "size": 1051947008
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_25.cas",
+      "size": 1064747008
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_26.cas",
+      "size": 1073250304
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cas_27.cas",
+      "size": 111128576
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/cs/cas_01.cas",
+      "size": 4943872
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/de/cas_01.cas",
+      "size": 5251072
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/en/cas_01.cas",
+      "size": 4902912
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/fi/cas_01.cas",
+      "size": 5214208
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/fr/cas_01.cas",
+      "size": 5414912
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_00/sv/cas_01.cas",
+      "size": 4845568
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_01/cas_01.cas",
+      "size": 1073336320
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_01/cas_02.cas",
+      "size": 1070579712
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_01/cas_03.cas",
+      "size": 685002752
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_01.cas",
+      "size": 1073668096
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_02.cas",
+      "size": 1072955392
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_03.cas",
+      "size": 1072828416
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_04.cas",
+      "size": 1073389568
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_05.cas",
+      "size": 1072369664
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_06.cas",
+      "size": 1071333376
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_07.cas",
+      "size": 1071591424
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_08.cas",
+      "size": 1072975872
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_09.cas",
+      "size": 1068527616
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_10.cas",
+      "size": 1061695488
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_02/cas_11.cas",
+      "size": 30433280
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_03/cas_01.cas",
+      "size": 1060757504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_03/cas_02.cas",
+      "size": 680509440
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_01.cas",
+      "size": 1073741824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_02.cas",
+      "size": 1065582592
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_03.cas",
+      "size": 1044733952
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_04.cas",
+      "size": 1070362624
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_05.cas",
+      "size": 1073057792
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_06.cas",
+      "size": 1070776320
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_07.cas",
+      "size": 1071087616
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_08.cas",
+      "size": 1073557504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_09.cas",
+      "size": 1071980544
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_10.cas",
+      "size": 1072599040
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_11.cas",
+      "size": 1072070656
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_12.cas",
+      "size": 1069735936
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_13.cas",
+      "size": 1072865280
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_14.cas",
+      "size": 1073098752
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_04/cas_15.cas",
+      "size": 450400256
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_01.cas",
+      "size": 1073283072
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_02.cas",
+      "size": 1073274880
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_03.cas",
+      "size": 1073602560
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_04.cas",
+      "size": 1073553408
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_05.cas",
+      "size": 1073401856
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_06.cas",
+      "size": 1073545216
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_07.cas",
+      "size": 1073717248
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_08.cas",
+      "size": 1073672192
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_09.cas",
+      "size": 1071976448
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_10.cas",
+      "size": 1072881664
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_100.cas",
+      "size": 1069449216
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_101.cas",
+      "size": 1068716032
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_102.cas",
+      "size": 1070116864
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_103.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_104.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_105.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_106.cas",
+      "size": 1070903296
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_107.cas",
+      "size": 1071030272
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_108.cas",
+      "size": 1070108672
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_109.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_11.cas",
+      "size": 1073557504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_110.cas",
+      "size": 1068716032
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_111.cas",
+      "size": 1068863488
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_112.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_113.cas",
+      "size": 1071509504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_114.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_115.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_116.cas",
+      "size": 1073201152
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_117.cas",
+      "size": 1071570944
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_118.cas",
+      "size": 1071529984
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_119.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_12.cas",
+      "size": 1073700864
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_120.cas",
+      "size": 1070321664
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_121.cas",
+      "size": 1071460352
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_122.cas",
+      "size": 1071104000
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_123.cas",
+      "size": 1068900352
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_124.cas",
+      "size": 1068986368
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_125.cas",
+      "size": 1068974080
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_126.cas",
+      "size": 1073647616
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_127.cas",
+      "size": 1073709056
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_128.cas",
+      "size": 1073430528
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_129.cas",
+      "size": 421879808
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_13.cas",
+      "size": 1073274880
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_14.cas",
+      "size": 1073741824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_15.cas",
+      "size": 1071685632
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_16.cas",
+      "size": 1072353280
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_17.cas",
+      "size": 1073172480
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_18.cas",
+      "size": 1073741824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_19.cas",
+      "size": 1073266688
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_20.cas",
+      "size": 1073729536
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_21.cas",
+      "size": 1073647616
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_22.cas",
+      "size": 1073573888
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_23.cas",
+      "size": 1070374912
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_24.cas",
+      "size": 1073336320
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_25.cas",
+      "size": 1072590848
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_26.cas",
+      "size": 1071935488
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_27.cas",
+      "size": 1073467392
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_28.cas",
+      "size": 1073737728
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_29.cas",
+      "size": 1073741824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_30.cas",
+      "size": 1072902144
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_31.cas",
+      "size": 1073405952
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_32.cas",
+      "size": 1073721344
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_33.cas",
+      "size": 1073397760
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_34.cas",
+      "size": 1073639424
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_35.cas",
+      "size": 1073717248
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_36.cas",
+      "size": 1073516544
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_37.cas",
+      "size": 1071910912
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_38.cas",
+      "size": 1071505408
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_39.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_40.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_41.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_42.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_43.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_44.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_45.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_46.cas",
+      "size": 1071505408
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_47.cas",
+      "size": 1072918528
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_48.cas",
+      "size": 1073709056
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_49.cas",
+      "size": 1068802048
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_50.cas",
+      "size": 1072271360
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_51.cas",
+      "size": 1069490176
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_52.cas",
+      "size": 1073680384
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_53.cas",
+      "size": 1072271360
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_54.cas",
+      "size": 1068789760
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_55.cas",
+      "size": 1072963584
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_56.cas",
+      "size": 1073684480
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_57.cas",
+      "size": 1070899200
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_58.cas",
+      "size": 1071575040
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_59.cas",
+      "size": 1073004544
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_60.cas",
+      "size": 1068802048
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_61.cas",
+      "size": 1072984064
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_62.cas",
+      "size": 1072979968
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_63.cas",
+      "size": 1073676288
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_64.cas",
+      "size": 1072979968
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_65.cas",
+      "size": 1070182400
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_66.cas",
+      "size": 1073672192
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_67.cas",
+      "size": 1073659904
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_68.cas",
+      "size": 1070161920
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_69.cas",
+      "size": 1071575040
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_70.cas",
+      "size": 1073676288
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_71.cas",
+      "size": 1073012736
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_72.cas",
+      "size": 1068797952
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_73.cas",
+      "size": 1071149056
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_74.cas",
+      "size": 1073229824
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_75.cas",
+      "size": 1070403584
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_76.cas",
+      "size": 1071575040
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_77.cas",
+      "size": 1071505408
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_78.cas",
+      "size": 1071677440
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_79.cas",
+      "size": 1073721344
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_80.cas",
+      "size": 1072697344
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_81.cas",
+      "size": 1072631808
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_82.cas",
+      "size": 1069035520
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_83.cas",
+      "size": 1072234496
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_84.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_85.cas",
+      "size": 1071509504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_86.cas",
+      "size": 1072914432
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_87.cas",
+      "size": 1073065984
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_88.cas",
+      "size": 1073074176
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_89.cas",
+      "size": 1071583232
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_90.cas",
+      "size": 1070108672
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_91.cas",
+      "size": 1070305280
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_92.cas",
+      "size": 1070108672
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_93.cas",
+      "size": 1073627136
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_94.cas",
+      "size": 1068756992
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_95.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_96.cas",
+      "size": 1068707840
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_97.cas",
+      "size": 1070125056
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_98.cas",
+      "size": 1072984064
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_05/cas_99.cas",
+      "size": 1071304704
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_06/cas_01.cas",
+      "size": 302333952
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_01.cas",
+      "size": 1073500160
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_02.cas",
+      "size": 1068355584
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_03.cas",
+      "size": 1071632384
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_04.cas",
+      "size": 1072390144
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_05.cas",
+      "size": 1068769280
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_06.cas",
+      "size": 1073631232
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_07.cas",
+      "size": 1071509504
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_08.cas",
+      "size": 1071656960
+    },
+    {
+      "path": "Data/Ps5/superbundlelayout/nhl_installpackage_07/cas_09.cas",
+      "size": 912064512
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_01.cas",
+      "size": 268374016
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_02.cas",
+      "size": 268357632
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_03.cas",
+      "size": 268304384
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_04.cas",
+      "size": 264904704
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_05.cas",
+      "size": 265351168
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_06.cas",
+      "size": 258019328
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_07.cas",
+      "size": 262402048
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_08.cas",
+      "size": 262479872
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cas_09.cas",
+      "size": 71401472
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/cs/cas_01.cas",
+      "size": 4964352
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/de/cas_01.cas",
+      "size": 5271552
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/en/cas_01.cas",
+      "size": 4919296
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/fi/cas_01.cas",
+      "size": 5234688
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/fr/cas_01.cas",
+      "size": 5447680
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_00/sv/cas_01.cas",
+      "size": 4866048
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_01/cas_01.cas",
+      "size": 124534784
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_02/cas_01.cas",
+      "size": 268333056
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_02/cas_02.cas",
+      "size": 57294848
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_03/cas_01.cas",
+      "size": 135168
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_04/cas_01.cas",
+      "size": 164540416
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_01.cas",
+      "size": 268255232
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_02.cas",
+      "size": 268427264
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_03.cas",
+      "size": 265801728
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_04.cas",
+      "size": 268267520
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_05.cas",
+      "size": 263069696
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_06.cas",
+      "size": 265646080
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_07.cas",
+      "size": 262946816
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_08.cas",
+      "size": 263655424
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_09.cas",
+      "size": 267075584
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_10.cas",
+      "size": 264855552
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_11.cas",
+      "size": 266260480
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_12.cas",
+      "size": 267993088
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_13.cas",
+      "size": 264699904
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_14.cas",
+      "size": 267685888
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_15.cas",
+      "size": 267304960
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_16.cas",
+      "size": 267841536
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_17.cas",
+      "size": 264265728
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_18.cas",
+      "size": 267808768
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_19.cas",
+      "size": 265871360
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_20.cas",
+      "size": 267153408
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_21.cas",
+      "size": 264245248
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_22.cas",
+      "size": 268316672
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_23.cas",
+      "size": 265752576
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_24.cas",
+      "size": 266145792
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_25.cas",
+      "size": 266846208
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_26.cas",
+      "size": 266211328
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_27.cas",
+      "size": 264724480
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_28.cas",
+      "size": 267894784
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_29.cas",
+      "size": 267436032
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_30.cas",
+      "size": 267390976
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_31.cas",
+      "size": 263217152
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_32.cas",
+      "size": 266330112
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_33.cas",
+      "size": 263868416
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_34.cas",
+      "size": 263200768
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_35.cas",
+      "size": 267583488
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_36.cas",
+      "size": 268255232
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_05/cas_37.cas",
+      "size": 62115840
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_06/cas_01.cas",
+      "size": 2490368
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_07/cas_01.cas",
+      "size": 266182656
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_07/cas_02.cas",
+      "size": 263823360
+    },
+    {
+      "path": "Patch/Ps5/superbundlelayout/nhl_installpackage_07/cas_03.cas",
+      "size": 149295104
+    }
+  ]
+}

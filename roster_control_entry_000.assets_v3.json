@@ -1,0 +1,3676 @@
+{
+  "totalCount": 458,
+  "ebxCount": 320,
+  "resCount": 131,
+  "chunkCount": 7,
+  "ebx": [
+    {
+      "name": "ui/widgets/notificationbadge/notification_badge_ecsprefab.nopolicy",
+      "originalSize": 36276,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__oninputgestureboolupdate",
+      "originalSize": 2510,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__oncontrolstatechanged",
+      "originalSize": 2236,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_propertychangedwrapper",
+      "originalSize": 3224,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__onhitzonereleased",
+      "originalSize": 2236,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_initwrapper",
+      "originalSize": 3004,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/focusonclick__onhitzonepressed",
+      "originalSize": 2234,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__onhitzonepressed",
+      "originalSize": 2234,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia__oninputgestureboolupdate",
+      "originalSize": 2062,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/prefabs/viewprefab_ecsprefab.nopolicy",
+      "originalSize": 8538,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_updatescrollpercent__extracted",
+      "originalSize": 2700,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/prefabs/inputhandlerprefab_ecsprefab.nopolicy",
+      "originalSize": 4776,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/buttonprompt/buttonprompt_ecsprefab.nopolicy",
+      "originalSize": 18246,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onrimelayoutchanged",
+      "originalSize": 2362,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move__onscrolldatachanged",
+      "originalSize": 2670,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__ontickeventobserverdata_b4625ade-52c0-acb5-34bd-4cc76f3d3c55",
+      "originalSize": 2150,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onscrolldatachanged",
+      "originalSize": 4990,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_basescrollaxisdata_updatescrollpercent__extracted",
+      "originalSize": 4308,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onhitzonepressed",
+      "originalSize": 2570,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__ontickeventobserverdata_f4bc91bd-66e5-4ae8-bfa5-41834af14418",
+      "originalSize": 2560,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__onrimelayoutchanged",
+      "originalSize": 2720,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic_initwrapper",
+      "originalSize": 3708,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onlistprovidersourcechanged",
+      "originalSize": 2544,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata__ontickeventobserverdata_ed0544b9-99a6-2230-bd35-89ec8af7cae5",
+      "originalSize": 3076,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onhitzonereleased",
+      "originalSize": 2140,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onscrolldatachanged",
+      "originalSize": 2428,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_setupnewitem__extracted",
+      "originalSize": 1930,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_propertychangedwrapper",
+      "originalSize": 1948,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_propertychangedwrapper",
+      "originalSize": 2026,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector__oncontrolstatechanged",
+      "originalSize": 2314,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata",
+      "originalSize": 5862,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/datalist/datalist_ecsprefab.nopolicy",
+      "originalSize": 7224,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__delayeventobserverdata_d47cb5ee-28ba-43fe-81f1-1133ff36addc",
+      "originalSize": 3144,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_onlistprovidersourcechanged__extracted",
+      "originalSize": 5742,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onscrolltrackpercent",
+      "originalSize": 2462,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused__oncontrolstatechanged",
+      "originalSize": 2628,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic__onlistprovidersourcechanged",
+      "originalSize": 2050,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__delayeventobserverdata_75b264f3-3689-45c7-be34-787c529eb190",
+      "originalSize": 2604,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic__oninputgesturefloatupdate",
+      "originalSize": 2352,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic__onselectionchanged",
+      "originalSize": 2958,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic_initwrapper",
+      "originalSize": 2276,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_initwrapper",
+      "originalSize": 7064,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlescrolling__extracted",
+      "originalSize": 3118,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic_initwrapper",
+      "originalSize": 4612,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__onscrolldatachanged",
+      "originalSize": 2444,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_ecsprefab.nopolicy",
+      "originalSize": 23148,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlelistsourcedatachanged__extracted",
+      "originalSize": 2066,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__onsetmaskexpansion",
+      "originalSize": 2200,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onarrowspressed",
+      "originalSize": 2394,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic",
+      "originalSize": 6208,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic",
+      "originalSize": 5474,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move_initwrapper",
+      "originalSize": 2126,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_getflowdirection__extracted",
+      "originalSize": 1894,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_initwrapper",
+      "originalSize": 4902,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_ecsprefab.nopolicy",
+      "originalSize": 61136,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__oninputgesturefloatupdate",
+      "originalSize": 2340,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic__onhitzonereleased",
+      "originalSize": 2456,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector__oncontrolstateselector_refresh",
+      "originalSize": 2394,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic__ondevicetypechange",
+      "originalSize": 1944,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollpane/scrollpane_ecsprefab.nopolicy",
+      "originalSize": 37794,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic__oncontrolstatechanged",
+      "originalSize": 6802,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_ecsprefab.nopolicy",
+      "originalSize": 47684,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_initwrapper",
+      "originalSize": 7300,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock__onfocus",
+      "originalSize": 2778,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic__scrollcontentlayoutchanged",
+      "originalSize": 2160,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock__onfocuschanged",
+      "originalSize": 2750,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock_initwrapper",
+      "originalSize": 1994,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_initwrapper",
+      "originalSize": 1880,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollinglist_ecsprefab.nopolicy",
+      "originalSize": 17334,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/gallery/views/selectablelistview/buttonselectinputtrigger__onbuttonpressed",
+      "originalSize": 1976,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_propertychangedwrapper",
+      "originalSize": 3134,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_propertychangedwrapper",
+      "originalSize": 2296,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_initwrapper",
+      "originalSize": 2722,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_initwrapper",
+      "originalSize": 2022,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_updatevisuals__extracted",
+      "originalSize": 2916,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic__postselectionchanged",
+      "originalSize": 2260,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_initwrapper",
+      "originalSize": 2114,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic__oncontrolstatechanged",
+      "originalSize": 3054,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic__oncontrolstatechanged",
+      "originalSize": 2502,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic__onselectinput",
+      "originalSize": 2240,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformiconitem_ecsprefab.nopolicy",
+      "originalSize": 9996,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_propertychangedwrapper",
+      "originalSize": 1928,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic__ontextureloaded",
+      "originalSize": 1930,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_ecsprefab.nopolicy",
+      "originalSize": 68300,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_initwrapper",
+      "originalSize": 2262,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tiletheme_logic_propertychangedwrapper",
+      "originalSize": 2360,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_ecsprefab.nopolicy",
+      "originalSize": 62638,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_propertychangedwrapper",
+      "originalSize": 2442,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__onhitzoneinputactionupdated",
+      "originalSize": 3038,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__onfocuschanged",
+      "originalSize": 2838,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic__oncontrolstatechanged",
+      "originalSize": 2386,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__oninputgestureboolupdate",
+      "originalSize": 3464,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic",
+      "originalSize": 5378,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_initwrapper",
+      "originalSize": 3242,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdownlistitem_ecsprefab",
+      "originalSize": 111514,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_propertychangedwrapper",
+      "originalSize": 2766,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_ecsprefab.nopolicy",
+      "originalSize": 82054,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrowindividual_ecsprefab",
+      "originalSize": 83934,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_logic__clearselectedrowslistener",
+      "originalSize": 2044,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_733c555b-6398-4527-91c6-9b5418e52c95",
+      "originalSize": 2156,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_a8861cb0-7d15-4c82-99c6-8fd4db94b426",
+      "originalSize": 2908,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_schematics",
+      "originalSize": 2852,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__onrightteamplayerlistselectionchanged",
+      "originalSize": 1998,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__sideslistfocuschanged",
+      "originalSize": 1930,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_propertychangedwrapper",
+      "originalSize": 3436,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic",
+      "originalSize": 8028,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/roster_control_view_ecsprefab",
+      "originalSize": 1418040,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__onleftteamplayerlistselectionchanged",
+      "originalSize": 1998,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_99fe245a-faeb-4bec-b36c-fa50f5452f45",
+      "originalSize": 2908,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__oninputactionpressed",
+      "originalSize": 3926,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_c533df41-9fd9-4e0c-8a91-d6639b3bba0a",
+      "originalSize": 2156,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrowheader_ecsprefab.nopolicy",
+      "originalSize": 27672,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_1fd6f232-6d56-4ce8-9811-9ad82e3be7dc",
+      "originalSize": 2408,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/buttonfocused",
+      "originalSize": 962,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic",
+      "originalSize": 3260,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_initwrapper",
+      "originalSize": 1644,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_ecsschematics",
+      "originalSize": 472,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationishorizontal",
+      "originalSize": 1398,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_ecsschematics",
+      "originalSize": 598,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic",
+      "originalSize": 2058,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_ecsschematics",
+      "originalSize": 408,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontroldropplayers",
+      "originalSize": 1028,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic_ecsschematics",
+      "originalSize": 510,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_schematics",
+      "originalSize": 716,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_schematics",
+      "originalSize": 916,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_2",
+      "originalSize": 348,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_ecsschematics",
+      "originalSize": 452,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/orientationtofitcontentorfillparentwidth",
+      "originalSize": 1428,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_deinitwrapper",
+      "originalSize": 1586,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_onselect",
+      "originalSize": 982,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_ecsschematics",
+      "originalSize": 408,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/resources/tweens/fadein_zoom",
+      "originalSize": 1120,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic_schematics",
+      "originalSize": 2046,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-label-m",
+      "originalSize": 1470,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic",
+      "originalSize": 1946,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-label-xl",
+      "originalSize": 1476,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia_schematics",
+      "originalSize": 852,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic",
+      "originalSize": 2254,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_destructorwrapper",
+      "originalSize": 1446,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/showdropdown",
+      "originalSize": 586,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_schematics",
+      "originalSize": 678,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_ecsschematics",
+      "originalSize": 462,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/gallery/views/selectablelistview/buttonselectinputtrigger_schematics",
+      "originalSize": 896,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_schematics",
+      "originalSize": 944,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/labelstyle-body-alt-9",
+      "originalSize": 734,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tiletheme_logic_schematics",
+      "originalSize": 712,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_setupnewitem__disp",
+      "originalSize": 1096,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase",
+      "originalSize": 650,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/icons/cofr/icon_bigtrade",
+      "originalSize": 312,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstateselector_refresh",
+      "originalSize": 676,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_destructorwrapper",
+      "originalSize": 1452,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector",
+      "originalSize": 1078,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_1",
+      "originalSize": 348,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowndatatofilterstruct",
+      "originalSize": 1804,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_initwrapper",
+      "originalSize": 1446,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__eventpayload__scrolltrackpercent",
+      "originalSize": 632,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_initwrapper",
+      "originalSize": 1816,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/animation/screeninanim",
+      "originalSize": 956,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_99fe245a-faeb-4bec-b36c-fa50f5452f45__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic",
+      "originalSize": 1830,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/oppositeorientation",
+      "originalSize": 1398,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrowspressed",
+      "originalSize": 1234,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_ecsschematics",
+      "originalSize": 558,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-header-s",
+      "originalSize": 1484,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata",
+      "originalSize": 1568,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic_initwrapper",
+      "originalSize": 1734,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_postselectionchanged",
+      "originalSize": 1142,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_setup__extracted",
+      "originalSize": 1372,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_schematics",
+      "originalSize": 874,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic",
+      "originalSize": 1322,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic",
+      "originalSize": 3168,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic",
+      "originalSize": 2802,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-body-l",
+      "originalSize": 1354,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/buttonpressed",
+      "originalSize": 1276,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic_initwrapper",
+      "originalSize": 1528,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_ecsschematics",
+      "originalSize": 386,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_a8861cb0-7d15-4c82-99c6-8fd4db94b426__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock_schematics",
+      "originalSize": 1150,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationtween",
+      "originalSize": 1180,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/animdecrement",
+      "originalSize": 958,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic",
+      "originalSize": 1350,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/resources/tweens/fadeout_up",
+      "originalSize": 1118,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic",
+      "originalSize": 1764,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_onlistprovidersourcechanged__disp",
+      "originalSize": 880,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbagdetype",
+      "originalSize": 854,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_c533df41-9fd9-4e0c-8a91-d6639b3bba0a__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__eventpayload__hidedropdown",
+      "originalSize": 550,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_schematics",
+      "originalSize": 950,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic_schematics",
+      "originalSize": 1422,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move",
+      "originalSize": 2114,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_ecsschematics",
+      "originalSize": 532,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_schematics",
+      "originalSize": 1212,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationtypetosizingmode",
+      "originalSize": 1418,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_schematics",
+      "originalSize": 1170,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/floattocornersizesvalueconverter",
+      "originalSize": 1358,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/resources/tweens/fadein_down",
+      "originalSize": 1120,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlelistsourcedatachanged__disp",
+      "originalSize": 900,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_ecsschematics",
+      "originalSize": 458,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/filtersopentoinputgateconverter",
+      "originalSize": 1846,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__eventpayload__rightleaguefilterindexchanged",
+      "originalSize": 1002,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_initwrapper",
+      "originalSize": 1442,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/hidedropdown",
+      "originalSize": 586,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolselectrightplayer",
+      "originalSize": 1024,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/fontswatches/labelstyle-font-swatch-secondary",
+      "originalSize": 576,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_deinitwrapper",
+      "originalSize": 1444,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_logic_ecsschematics",
+      "originalSize": 498,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused_initwrapper",
+      "originalSize": 1532,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationtoasset",
+      "originalSize": 1712,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector",
+      "originalSize": 2830,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selecteditem_info",
+      "originalSize": 902,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__eventpayload__showdropdown",
+      "originalSize": 550,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic",
+      "originalSize": 3736,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__eventpayload__setmaskexpansion",
+      "originalSize": 1064,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic_schematics",
+      "originalSize": 1542,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_state",
+      "originalSize": 954,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic_ecsschematics",
+      "originalSize": 548,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/focusonclick",
+      "originalSize": 1110,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/roster_control_view_ecsviewprefab_connectedfranchisemainhubviewslots",
+      "originalSize": 418,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_75b264f3-3689-45c7-be34-787c529eb190__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia_initwrapper",
+      "originalSize": 1692,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_changestyleonfocus",
+      "originalSize": 720,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/filterdatastruct",
+      "originalSize": 1234,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tilevisuals",
+      "originalSize": 712,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/gallery/views/selectablelistview/buttonselectinputtrigger_ecsschematics",
+      "originalSize": 484,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_ecsschematics",
+      "originalSize": 462,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_logic",
+      "originalSize": 1142,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/focusonclick_ecsschematics",
+      "originalSize": 488,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_cleanup__disp",
+      "originalSize": 846,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused_ecsschematics",
+      "originalSize": 424,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tiletheme_logic_ecsschematics",
+      "originalSize": 382,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic_ecsschematics",
+      "originalSize": 532,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/animation/screenoutanim",
+      "originalSize": 958,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_ecsschematics",
+      "originalSize": 458,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_ecsschematics",
+      "originalSize": 568,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_refreshfinished",
+      "originalSize": 656,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlescrolling__disp",
+      "originalSize": 876,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/clearselectedrows",
+      "originalSize": 688,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_schematics",
+      "originalSize": 772,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_initwrapper",
+      "originalSize": 1746,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-body-m",
+      "originalSize": 1362,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/proxy_ecsprefab",
+      "originalSize": 1962,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_updatescrollpercent__disp",
+      "originalSize": 1504,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused_schematics",
+      "originalSize": 890,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic",
+      "originalSize": 1856,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_changestyleonfocus_ecsschematics",
+      "originalSize": 442,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_ecsschematics",
+      "originalSize": 400,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused",
+      "originalSize": 1118,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_deinitwrapper",
+      "originalSize": 1496,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_733c555b-6398-4527-91c6-9b5418e52c95__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move_schematics",
+      "originalSize": 974,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_schematics",
+      "originalSize": 1014,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_deinitwrapper",
+      "originalSize": 1704,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic_schematics",
+      "originalSize": 1592,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_changestyleonfocus_schematics",
+      "originalSize": 636,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_enabledwrapper",
+      "originalSize": 1534,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_getflowdirection__disp",
+      "originalSize": 1024,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_setup__disp",
+      "originalSize": 842,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/converters/stringlocargs/stringargument",
+      "originalSize": 1484,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_schematics",
+      "originalSize": 1930,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/animincrement",
+      "originalSize": 958,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia_ecsschematics",
+      "originalSize": 456,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_destructorwrapper",
+      "originalSize": 1458,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_schematics",
+      "originalSize": 854,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_schematics",
+      "originalSize": 2356,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/bgs/ice_background_dark",
+      "originalSize": 312,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_logic_schematics",
+      "originalSize": 910,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic",
+      "originalSize": 1510,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-label-s",
+      "originalSize": 1478,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_schematics",
+      "originalSize": 1414,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__eventpayload__maskexpansionproperties",
+      "originalSize": 626,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-header-m",
+      "originalSize": 1480,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_1fd6f232-6d56-4ce8-9811-9ad82e3be7dc__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_ecsschematics",
+      "originalSize": 386,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/focusonclick_schematics",
+      "originalSize": 866,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationisvertical",
+      "originalSize": 1388,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/styles/text/new/labelstyle-subheader-xs",
+      "originalSize": 1480,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolswapplayers",
+      "originalSize": 700,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic_schematics",
+      "originalSize": 1030,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia",
+      "originalSize": 1324,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic_ecsschematics",
+      "originalSize": 484,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/roster_control_view_ecsviewprefab_connectedfranchisemainhubviewslots_networkregistry_ps5",
+      "originalSize": 1266,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationtoedgesizes",
+      "originalSize": 1572,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolselectleftplayer",
+      "originalSize": 1026,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__eventpayload__leftleaguefilterindexchanged",
+      "originalSize": 1000,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/logos/nhl/nhl_logo",
+      "originalSize": 306,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic_ecsschematics",
+      "originalSize": 492,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_onselectionchanged",
+      "originalSize": 1004,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_ecsschematics",
+      "originalSize": 378,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__eventpayload__leftteamfilterindexchanged",
+      "originalSize": 996,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic",
+      "originalSize": 1260,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationtypetofloat",
+      "originalSize": 1670,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/orientationtofitcontentorfillparentheight",
+      "originalSize": 1430,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_schematics",
+      "originalSize": 2032,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock",
+      "originalSize": 2346,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_cleanup__extracted",
+      "originalSize": 1376,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/scrolldatachanged",
+      "originalSize": 1908,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/gallery/views/selectablelistview/buttonselectinputtrigger",
+      "originalSize": 1420,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__eventpayload__rightteamfilterindexchanged",
+      "originalSize": 998,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_0",
+      "originalSize": 348,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_ecsschematics",
+      "originalSize": 450,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/actionitem/icons/item_lock",
+      "originalSize": 306,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_initwrapper",
+      "originalSize": 1530,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_schematics",
+      "originalSize": 1150,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_schematics",
+      "originalSize": 940,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move_ecsschematics",
+      "originalSize": 474,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic",
+      "originalSize": 4516,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_schematics",
+      "originalSize": 688,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/roster_control_view_ecsviewprefab_connectedfranchisemainhubviewslots_blueprint",
+      "originalSize": 472,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/piatosoundid",
+      "originalSize": 804,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_initwrapper",
+      "originalSize": 1650,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/notificationbadge/startnotificationanim",
+      "originalSize": 622,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/tile/new/tiletheme_logic",
+      "originalSize": 4456,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_initwrapper",
+      "originalSize": 1740,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "delayfield_d47cb5ee-28ba-43fe-81f1-1133ff36addc__eventpayloadtype",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolback",
+      "originalSize": 994,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock_ecsschematics",
+      "originalSize": 506,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/roster_control_view_ecsviewprefab",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_ecsschematics",
+      "originalSize": 584,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_ecsschematics",
+      "originalSize": 466,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/buttonreleased",
+      "originalSize": 1278,
+      "logicalSize": 0,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    }
+  ],
+  "res": [
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_initwrapper",
+      "originalSize": 10368,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8594535308098755467,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_733c555b-6398-4527-91c6-9b5418e52c95",
+      "originalSize": 976,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6421226604700757713,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__onhitzoneinputactionupdated",
+      "originalSize": 3664,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4002191735559319511,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationtypetosizingmode",
+      "originalSize": 656,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17792138190935137085,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_initwrapper",
+      "originalSize": 544,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14746547108391684413,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_enabledwrapper",
+      "originalSize": 544,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 9316476879754269095,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock__onfocus",
+      "originalSize": 3472,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14853890622483700049,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__delayeventobserverdata_75b264f3-3689-45c7-be34-787c529eb190",
+      "originalSize": 2784,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 9590929459424882975,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_1",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 11522671804346997189,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "ui/widgets/actionitem/icons/item_lock",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 15887177556479207679,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_propertychangedwrapper",
+      "originalSize": 2752,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6574978559694677993,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_destructorwrapper",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11576928648995767359,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/bgs/ice_background_dark",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 17986253611630325663,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__onrimelayoutchanged",
+      "originalSize": 2576,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 15209355149752484651,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic_initwrapper",
+      "originalSize": 672,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3934734360553572915,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia_initwrapper",
+      "originalSize": 1280,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 779565855191351237,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_a8861cb0-7d15-4c82-99c6-8fd4db94b426",
+      "originalSize": 3152,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 5599121166852223731,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__delayeventobserverdata_d47cb5ee-28ba-43fe-81f1-1133ff36addc",
+      "originalSize": 2240,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7734177313383640591,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic__onhitzonereleased",
+      "originalSize": 1504,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17948641254491122043,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__onleftteamplayerlistselectionchanged",
+      "originalSize": 448,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6928776176175011677,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__onrightteamplayerlistselectionchanged",
+      "originalSize": 448,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4692850329118107143,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move__onscrolldatachanged",
+      "originalSize": 3152,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11588626752452547179,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_initwrapper",
+      "originalSize": 2288,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8549894607601771955,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic_initwrapper",
+      "originalSize": 6208,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16603296156560970199,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused__oncontrolstatechanged",
+      "originalSize": 1728,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10237649950013901305,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_propertychangedwrapper",
+      "originalSize": 5136,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8642246398457841483,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_destructorwrapper",
+      "originalSize": 432,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 1543771079112976935,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_initwrapper",
+      "originalSize": 3680,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4531800212141330891,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onlistprovidersourcechanged",
+      "originalSize": 752,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4251198620039029043,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_initwrapper",
+      "originalSize": 1952,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17110509981180599637,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic__oncontrolstatechanged",
+      "originalSize": 1952,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 18275915687808636965,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__oninputgestureboolupdate",
+      "originalSize": 5200,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7438936144882967999,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowndatatofilterstruct",
+      "originalSize": 1104,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 1418775284173621901,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic__onscrolldatachanged",
+      "originalSize": 1696,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 12354104420261475685,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic__postselectionchanged",
+      "originalSize": 1520,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17267842256068811973,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock__onfocuschanged",
+      "originalSize": 3392,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6248791935099150721,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollwindow_logic_initwrapper",
+      "originalSize": 1232,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 1243173554965606753,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onscrolldatachanged",
+      "originalSize": 576,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14288124696930699525,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__onrimelayoutchanged",
+      "originalSize": 576,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10487798248096262899,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__oncontrolstatechanged",
+      "originalSize": 720,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 745721458235921599,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_initwrapper",
+      "originalSize": 784,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2977187710932307597,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_2",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 11880659545832267011,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic__onselectionchanged",
+      "originalSize": 3712,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 768711827061076005,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic__ontickeventobserverdata_b4625ade-52c0-acb5-34bd-4cc76f3d3c55",
+      "originalSize": 528,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2330893213213868463,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_initwrapper",
+      "originalSize": 2672,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17514715831035966887,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/widgets/playerrow_logic__clearselectedrowslistener",
+      "originalSize": 576,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14584947311695782997,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_initwrapper",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16544017722517390531,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_initwrapper",
+      "originalSize": 1120,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11269227949134207871,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/icons/cofr/icon_bigtrade",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 6487679470011821899,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_destructorwrapper",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7012581388050846103,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/inputwhenfocused_initwrapper",
+      "originalSize": 592,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 13391282721693411467,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onhitzonepressed",
+      "originalSize": 2048,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 656525085044767463,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__onsetmaskexpansion",
+      "originalSize": 816,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 15262924254650298737,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic__oncontrolstatechanged",
+      "originalSize": 2032,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 13080136829823223113,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__onhitzonereleased",
+      "originalSize": 816,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2314616643731581769,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/utils/behaviors/ufosfx/playsoundonpia__oninputgestureboolupdate",
+      "originalSize": 1152,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 1422875558377392443,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_deinitwrapper",
+      "originalSize": 720,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 973690350940462097,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollbar/floattocornersizesvalueconverter",
+      "originalSize": 336,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4266879396379807573,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/actionitem/actionitemtheme_logic_propertychangedwrapper",
+      "originalSize": 2032,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11026676927138845583,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/gallery/views/selectablelistview/buttonselectinputtrigger__onbuttonpressed",
+      "originalSize": 480,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17771065067621448511,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic__onfocuschanged",
+      "originalSize": 3712,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 5424385771230681005,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/oppositeorientation",
+      "originalSize": 480,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10059925998206361437,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_1fd6f232-6d56-4ce8-9811-9ad82e3be7dc",
+      "originalSize": 1632,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6749202124961415431,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationtoedgesizes",
+      "originalSize": 624,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10865454177845607495,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_initwrapper",
+      "originalSize": 2320,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8173559236612279975,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic__oncontrolstatechanged",
+      "originalSize": 5264,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11614105216799311133,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic_initwrapper",
+      "originalSize": 7936,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6581115381726303257,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/listfocuslock_initwrapper",
+      "originalSize": 1776,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 101110730417954019,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_updatescrollpercent__extracted",
+      "originalSize": 1552,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16737378050520848781,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic__scrollcontentlayoutchanged",
+      "originalSize": 1440,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6834117084734533209,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/logos/nhl/nhl_logo",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 8690595399739416099,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_setupnewitem__extracted",
+      "originalSize": 496,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16667799931228577293,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onhitzonereleased",
+      "originalSize": 576,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 5211902405199963999,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onscrolltrackpercent",
+      "originalSize": 1888,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 406566787596153549,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic_initwrapper",
+      "originalSize": 5504,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3884955727127288785,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onscrolldatachanged",
+      "originalSize": 5264,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3276974847836041405,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector_propertychangedwrapper",
+      "originalSize": 1488,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2107100411530493393,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_c533df41-9fd9-4e0c-8a91-d6639b3bba0a",
+      "originalSize": 976,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17444183215755958221,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_initwrapper",
+      "originalSize": 992,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8528881854311984277,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic__onselectinput",
+      "originalSize": 1568,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3535854758597533649,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector__oncontrolstateselector_refresh",
+      "originalSize": 1264,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6509397490818307855,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__ontickeventobserverdata_f4bc91bd-66e5-4ae8-bfa5-41834af14418",
+      "originalSize": 3184,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4494559758599617855,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__oninputgestureboolupdate",
+      "originalSize": 1696,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3126499847097627637,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/filtersopentoinputgateconverter",
+      "originalSize": 432,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2637067414583383777,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationbadge_logic_propertychangedwrapper",
+      "originalSize": 2720,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 4281796995153340651,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/scrollpane_logic__oninputgesturefloatupdate",
+      "originalSize": 1408,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2163625348329133425,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationisvertical",
+      "originalSize": 288,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11234388090777132035,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlescrolling__extracted",
+      "originalSize": 1904,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 12563960759372756019,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/textures/common/icons/crossplay/platform_indicators/64x64/default_platform_0",
+      "originalSize": 184,
+      "logicalSize": 0,
+      "resType": 1809719482,
+      "resRid": 11434679793940145437,
+      "resMeta": "0C000000010800000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/orientationtofitcontentorfillparentheight",
+      "originalSize": 528,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11113544408484337353,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/tile/new/tiletheme_logic_propertychangedwrapper",
+      "originalSize": 2208,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16977810599030044855,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic__onlistprovidersourcechanged",
+      "originalSize": 320,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 18311264277727056599,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/controlstate/controlstate_colorselector__oncontrolstatechanged",
+      "originalSize": 1152,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 296891334215510091,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic_initwrapper",
+      "originalSize": 1056,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11339372516612676853,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic_initwrapper",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14672948891927855973,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_logic_onlistprovidersourcechanged__extracted",
+      "originalSize": 7696,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11831260002035474249,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_initwrapper",
+      "originalSize": 5968,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6333910134302324861,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/tile/new/tile_logic_propertychangedwrapper",
+      "originalSize": 2368,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 1563701034156502201,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic_deinitwrapper",
+      "originalSize": 384,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6279584769095223833,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/behaviors/focusbehaviors/focusonclick__onhitzonepressed",
+      "originalSize": 1168,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8124207415741755363,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata__ontickeventobserverdata_ed0544b9-99a6-2230-bd35-89ec8af7cae5",
+      "originalSize": 4000,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2688810764139625471,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic_initwrapper",
+      "originalSize": 3792,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8348906945984971069,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_setup__extracted",
+      "originalSize": 128,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3854336720026025297,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/datalist/datalist_itembase_cleanup__extracted",
+      "originalSize": 128,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 8595769151197194125,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__oninputactionpressed",
+      "originalSize": 4352,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2035708239401429423,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollbar/scrollbar_logic__ondevicetypechange",
+      "originalSize": 992,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7212192885671332609,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_initwrapper",
+      "originalSize": 2048,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3309669692045354319,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationishorizontal",
+      "originalSize": 288,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 16536000262990974183,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/functions/valueconverters/orientationtoasset",
+      "originalSize": 480,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 12010905769608767017,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectablelist_logic_propertychangedwrapper",
+      "originalSize": 1280,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7339001046026792305,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_getflowdirection__extracted",
+      "originalSize": 416,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7678371316437528319,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbar_move_initwrapper",
+      "originalSize": 2688,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 12263251444626028699,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/scrollinglist/scrollwindowhelper_logic_initwrapper",
+      "originalSize": 1936,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14117399988657917477,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/utils/behaviors/assets/assetselector_propertychangedwrapper",
+      "originalSize": 1216,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 9417514065519149383,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__sideslistfocuschanged",
+      "originalSize": 416,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6322565481948551907,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitemtheme_logic_updatevisuals__extracted",
+      "originalSize": 1712,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 17846395027365445665,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_deinitwrapper",
+      "originalSize": 608,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7213955603617938091,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollpane/orientationtofitcontentorfillparentwidth",
+      "originalSize": 528,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 2296035220294803311,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/button/button_logic__onhitzonepressed",
+      "originalSize": 816,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 7787402775476107175,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/utils/converters/stringlocargs/stringargument",
+      "originalSize": 448,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14546010498507262261,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/selectablelist/selectableitem_logic_deinitwrapper",
+      "originalSize": 1088,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 366085670311167401,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/ecs/features/connectedfranchise/leaguehub/rostercontrol/views/rostercontrolview_logic__delayeventobserverdata_99fe245a-faeb-4bec-b36c-fa50f5452f45",
+      "originalSize": 3152,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10745650619342668627,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/notificationbadge/notificationtypetofloat",
+      "originalSize": 800,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 6828717588612372545,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollbar/scrollbarwitharrows_logic__onarrowspressed",
+      "originalSize": 1344,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3493236108379795971,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/platformicon/platformicon_logic__ontextureloaded",
+      "originalSize": 544,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 3723739171713052815,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdown_logic_propertychangedwrapper",
+      "originalSize": 3760,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 9572625047895243405,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/basescrollaxisdata_initwrapper",
+      "originalSize": 944,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 13286243503000324901,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/arrows/arrows_logic__oninputgesturefloatupdate",
+      "originalSize": 1408,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 10297629729386391005,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/widgets/scrollinglist/scrollinglist_logic_handlelistsourcedatachanged__extracted",
+      "originalSize": 624,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 11717664705738450407,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "systemlibrary/rimetoolkit/utilities/scroll/approachratescrollaxisdata_basescrollaxisdata_updatescrollpercent__extracted",
+      "originalSize": 10016,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 13822102828774990071,
+      "resMeta": "00000000000000000000000000000000"
+    },
+    {
+      "name": "ui/widgets/dropdown/dropdowntheme_logic__oncontrolstatechanged",
+      "originalSize": 1872,
+      "logicalSize": 0,
+      "resType": 2111097993,
+      "resRid": 14526927970872105525,
+      "resMeta": "00000000000000000000000000000000"
+    }
+  ],
+  "chunks": [
+    {
+      "name": null,
+      "originalSize": 1044480,
+      "logicalSize": 1044480,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 122880,
+      "logicalSize": 122880,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 4096,
+      "logicalSize": 4096,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 49152,
+      "logicalSize": 49152,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 4096,
+      "logicalSize": 4096,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 4096,
+      "logicalSize": 4096,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    },
+    {
+      "name": null,
+      "originalSize": 4096,
+      "logicalSize": 4096,
+      "resType": 0,
+      "resRid": 0,
+      "resMeta": null
+    }
+  ]
+}
