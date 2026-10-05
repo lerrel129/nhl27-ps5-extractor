@@ -10,7 +10,8 @@ Read-only tools for inspecting and extracting NHL 27 PS5 Frostbite TOC/CAS archi
 ## Usage
 
 ```powershell
-# Player database (8906 players) as players.json / players.csv
+# Player database (8906 players) as players.json / players.csv,
+# plus ai_skills.json / ai_skills.csv for skater and goalie ratings
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --export-player-db .\extracted\player_db
 
 # Find bundles by name, then extract every EBX/RES/chunk asset of one bundle

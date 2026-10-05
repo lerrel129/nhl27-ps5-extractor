@@ -427,8 +427,46 @@ def export_player_database(game_root: Path, output_dir: Path, frosty_dir: Path) 
         writer.writeheader()
         writer.writerows(rows)
 
+    ai_rows: list[dict[str, object]] = []
+    for player in players.values():
+        attribute = player.get("Attribute", {})
+        ai = player.get("Ai", {})
+        is_goalie = bool(ai.get("IsGoalie"))
+        skills = ai.get("GoalieAi" if is_goalie else "SkaterAi", {})
+        active_xfactors = [
+            ability
+            for ability in ai.get("XFactorAbilities", [])
+            if ability.get("Id", -1) >= 0 and ability.get("Status", 0) > 0
+        ]
+        ai_rows.append(
+            {
+                "chunk_id": player["chunk_id"],
+                "player_id": attribute.get("Id"),
+                "first_name": attribute.get("FirstName"),
+                "last_name": attribute.get("LastName"),
+                "position": attribute.get("PosType"),
+                "jersey_number": attribute.get("JerseyNum"),
+                "role": "Goalie" if is_goalie else "Skater",
+                "overall": skills.get("Overall"),
+                "potential": skills.get("Potential"),
+                "growth_tier": skills.get("GrowthTier"),
+                "xfactors": ";".join(
+                    f"{ability['Id']}:{ability.get('Tier', 0)}:{ability.get('Status', 0)}"
+                    for ability in active_xfactors
+                ),
+                **{f"ai_{key}": value for key, value in skills.items()},
+            }
+        )
+    ai_columns = sorted({key for row in ai_rows for key in row})
+    with (output_dir / "ai_skills.csv").open("w", encoding="utf-8", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=ai_columns, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(ai_rows)
+    (output_dir / "ai_skills.json").write_text(json.dumps(ai_rows, indent=1), encoding="utf-8")
+
     summary = {
         "player_count": len(players),
+        "ai_skill_columns": ai_columns,
         "other_documents": {kind: len(items) for kind, items in documents.items()},
         "columns": columns,
     }
