@@ -682,27 +682,22 @@ def safe_asset_path(root: Path, name: str, suffix: str) -> Path:
     return root.joinpath(*parts)
 
 
-def aligned_bc1_mips(width: int, height: int, chunk_size: int) -> list[tuple[int, int, int, int]]:
-    """Returns Frostbite's 256-byte-aligned BC1 mip layout if it exactly fills the chunk."""
+def texture_mip_layout(width: int, height: int, mip_sizes: list[int], chunk_size: int) -> list[tuple[int, int, int, int]]:
+    """Returns (width, height, offset, size) per mip; the chunk stores mips smallest-first."""
     if width <= 0 or height <= 0:
         raise ValueError("Texture dimensions must be positive.")
-    mip_layout: list[tuple[int, int, int, int]] = []
-    offset = 0
-    mip_width, mip_height = width, height
-    while True:
-        data_size = max(1, (mip_width + 3) // 4) * max(1, (mip_height + 3) // 4) * 8
-        padded_size = (data_size + 255) & ~255
-        if offset + padded_size > chunk_size:
-            break
-        mip_layout.append((mip_width, mip_height, offset, data_size))
-        offset += padded_size
-        if offset == chunk_size:
-            return mip_layout
-        if mip_width == 1 and mip_height == 1:
-            break
-        mip_width = max(1, mip_width // 2)
-        mip_height = max(1, mip_height // 2)
-    raise ValueError(f"Chunk size {chunk_size} does not match a 256-byte-aligned BC1 mip chain.")
+    if sum(mip_sizes) != chunk_size:
+        raise ValueError(f"Header mip sizes total {sum(mip_sizes)} bytes but the chunk has {chunk_size}.")
+    layout: list[tuple[int, int, int, int]] = []
+    for level, size in enumerate(mip_sizes):
+        mip_width, mip_height = max(1, width >> level), max(1, height >> level)
+        expected = max(1, (mip_width + 3) // 4) * max(1, (mip_height + 3) // 4) * 8
+        is_tail = level == len(mip_sizes) - 1
+        # The last table entry packs this mip plus every smaller one; only its leading mip is used.
+        if size != expected and not (is_tail and size > expected):
+            raise ValueError(f"Mip {level} has {size} bytes; BC1 {mip_width}x{mip_height} needs {expected}.")
+        layout.append((mip_width, mip_height, sum(mip_sizes[level + 1 :]), expected))
+    return layout
 
 
 def make_dds_bc1(width: int, height: int, mip_data: list[bytes]) -> bytes:
@@ -740,31 +735,30 @@ def make_dds_bc1(width: int, height: int, mip_data: list[bytes]) -> bytes:
 
 
 def unswizzle_bc1_mip(width: int, height: int, data: bytes) -> bytes:
-    """Converts PS5's 8x8 Morton-ordered BC1 blocks into row-major block order."""
+    """Converts PS5 16x16-block tiles (bit order x0 y0 y1 x1 x2 y2 x3 y3) into row-major BC1 blocks."""
     block_width = max(1, (width + 3) // 4)
     block_height = max(1, (height + 3) // 4)
     expected_size = block_width * block_height * 8
     if len(data) != expected_size:
         raise ValueError(f"BC1 mip has {len(data)} bytes; expected {expected_size}.")
-    tile_width = min(8, block_width)
-    tile_height = min(8, block_height)
-    blocks_per_tile = tile_width * tile_height
+    if block_width < 16 or block_height < 16:
+        return data  # Mips smaller than one tile are stored linearly.
+    tiles_per_row = block_width // 16
     output = bytearray(len(data))
-
-    def morton_index(x: int, y: int) -> int:
-        result = 0
-        bit = 0
-        while (1 << bit) < max(tile_width, tile_height):
-            result |= ((x >> bit) & 1) << (2 * bit)
-            result |= ((y >> bit) & 1) << (2 * bit + 1)
-            bit += 1
-        return result
-
     for block_y in range(block_height):
         for block_x in range(block_width):
-            source_block = (
-                (block_y // tile_height) * (block_width // tile_width) + block_x // tile_width
-            ) * blocks_per_tile + morton_index(block_x % tile_width, block_y % tile_height)
+            local_x, local_y = block_x & 15, block_y & 15
+            within_tile = (
+                (local_x & 1)
+                | (local_y & 1) << 1
+                | ((local_y >> 1) & 1) << 2
+                | ((local_x >> 1) & 1) << 3
+                | ((local_x >> 2) & 1) << 4
+                | ((local_y >> 2) & 1) << 5
+                | ((local_x >> 3) & 1) << 6
+                | ((local_y >> 3) & 1) << 7
+            )
+            source_block = ((block_y >> 4) * tiles_per_row + (block_x >> 4)) * 256 + within_tile
             target_block = block_y * block_width + block_x
             output[target_block * 8 : target_block * 8 + 8] = data[source_block * 8 : source_block * 8 + 8]
     return bytes(output)
@@ -840,10 +834,12 @@ def convert_frostbite_textures(texture_dir: Path) -> dict[str, object]:
             texture_format = struct.unpack_from("<I", header, 12)[0]
             if texture_format != 0x37:
                 raise ValueError(f"Unsupported Frostbite texture format enum 0x{texture_format:X}; only BC1 (0x37) is verified.")
-            width, height = struct.unpack_from(">II", header, 0x38)
+            width, height = struct.unpack_from("<HH", header, 0x16)
+            mip_count = header[0x1E]
+            mip_sizes = list(struct.unpack_from(f"<{mip_count}I", header, 0x38))
             chunk_id = str(uuid.UUID(bytes_le=header[0x28:0x38]))
             chunk = (chunk_root / f"{chunk_id}.chunk").read_bytes()
-            mip_layout = aligned_bc1_mips(width, height, len(chunk))
+            mip_layout = texture_mip_layout(width, height, [size for size in mip_sizes if size], len(chunk))
             mips = [
                 unswizzle_bc1_mip(mip_width, mip_height, chunk[offset : offset + size])
                 for mip_width, mip_height, offset, size in mip_layout
