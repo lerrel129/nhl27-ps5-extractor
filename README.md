@@ -14,8 +14,9 @@ Read-only tools for inspecting and extracting NHL 27 PS5 Frostbite TOC/CAS archi
 # teams.json / teams.csv, team_stats.csv, and team_lines.csv
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --export-player-db .\extracted\player_db
 
-# After extracting a texture bundle, convert verified PS5-tiled BC1 texture RES/chunk pairs to DDS and PNG
+# After extracting a texture bundle, convert supported BC1/BC3/BC5 texture RES/chunk pairs to DDS and PNG
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --convert-textures .\extracted\textures\faces\pyotr_kochetkov
+python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --convert-textures .\extracted\textures\jerseys\nyr_home
 
 # Find bundles by name, then extract every EBX/RES/chunk asset of one bundle
 python nhl27_ps5_extractor.py "F:\NHL 27\PPSA34063-app0" --toc Data/Ps5/contentsb.toc --find-bundle nyr/adidas
@@ -31,3 +32,5 @@ Patch TOCs (`Patch/Ps5/*.toc`) are supported; each entry's descriptor selects wh
 `team_lines.csv` preserves the game roster index for each formation slot. The base loose JSON data does not include the mapping from that index to a player record. Team statistics are stored in the team documents; season statistics for individual players are not part of the base player documents.
 
 All generated reports, raw asset exports, decoded payloads, models, and build output are excluded from version control. Tools must not write to the game installation directory.
+
+Texture conversion supports BC1 sRGB, BC3 UNORM/sRGB, and BC5 UNORM resources with Frosty's PS4-swizzle flag. DDS files contain the top mip and all array slices; PNG output is written once per slice. BC3/BC5 PNG conversion uses `texconv.exe` from the configured FMT directory.

@@ -6,6 +6,8 @@ import ctypes
 import json
 import re
 import struct
+import subprocess
+import tempfile
 import uuid
 import zlib
 from dataclasses import asdict, dataclass
@@ -682,44 +684,22 @@ def safe_asset_path(root: Path, name: str, suffix: str) -> Path:
     return root.joinpath(*parts)
 
 
-def texture_mip_layout(width: int, height: int, mip_sizes: list[int], chunk_size: int) -> list[tuple[int, int, int, int]]:
-    """Returns (width, height, offset, size) per mip; the chunk stores mips smallest-first."""
-    if width <= 0 or height <= 0:
-        raise ValueError("Texture dimensions must be positive.")
-    if sum(mip_sizes) != chunk_size:
-        raise ValueError(f"Header mip sizes total {sum(mip_sizes)} bytes but the chunk has {chunk_size}.")
-    layout: list[tuple[int, int, int, int]] = []
-    for level, size in enumerate(mip_sizes):
-        mip_width, mip_height = max(1, width >> level), max(1, height >> level)
-        expected = max(1, (mip_width + 3) // 4) * max(1, (mip_height + 3) // 4) * 8
-        is_tail = level == len(mip_sizes) - 1
-        # The last table entry packs this mip plus every smaller one; only its leading mip is used.
-        if size != expected and not (is_tail and size > expected):
-            raise ValueError(f"Mip {level} has {size} bytes; BC1 {mip_width}x{mip_height} needs {expected}.")
-        layout.append((mip_width, mip_height, sum(mip_sizes[level + 1 :]), expected))
-    return layout
-
-
-def make_dds_bc1(width: int, height: int, mip_data: list[bytes]) -> bytes:
+def make_dds_dx10(width: int, height: int, dxgi_format: int, slices: list[bytes]) -> bytes:
     flags = 0x00081007  # CAPS | HEIGHT | WIDTH | PIXELFORMAT | LINEARSIZE
-    if len(mip_data) > 1:
-        flags |= 0x00020000  # MIPMAPCOUNT
-    caps = 0x00001000  # TEXTURE
-    if len(mip_data) > 1:
-        caps |= 0x00400008  # MIPMAP | COMPLEX
+    caps = 0x00001000 | (0x00000008 if len(slices) > 1 else 0)
     header = struct.pack(
         "<31I",
         124,
         flags,
         height,
         width,
-        len(mip_data[0]),
+        len(slices[0]),
         0,
-        len(mip_data),
+        1,
         *([0] * 11),
         32,
         4,
-        int.from_bytes(b"DXT1", "little"),
+        int.from_bytes(b"DX10", "little"),
         0,
         0,
         0,
@@ -731,36 +711,50 @@ def make_dds_bc1(width: int, height: int, mip_data: list[bytes]) -> bytes:
         0,
         0,
     )
-    return b"DDS " + header + b"".join(mip_data)
+    dx10 = struct.pack("<5I", dxgi_format, 3, 0, len(slices), 0)
+    return b"DDS " + header + dx10 + b"".join(slices)
 
 
-def unswizzle_bc1_mip(width: int, height: int, data: bytes) -> bytes:
-    """Converts PS5 16x16-block tiles (bit order x0 y0 y1 x1 x2 y2 x3 y3) into row-major BC1 blocks."""
+def unswizzle_compressed_mip(width: int, height: int, data: bytes, block_bytes: int) -> bytes:
+    """Converts Frosty's PS4-swizzled 8x8 compressed blocks into row-major order."""
     block_width = max(1, (width + 3) // 4)
     block_height = max(1, (height + 3) // 4)
-    expected_size = block_width * block_height * 8
+    expected_size = block_width * block_height * block_bytes
     if len(data) != expected_size:
-        raise ValueError(f"BC1 mip has {len(data)} bytes; expected {expected_size}.")
-    if block_width < 16 or block_height < 16:
-        return data  # Mips smaller than one tile are stored linearly.
-    tiles_per_row = block_width // 16
+        raise ValueError(f"Compressed mip has {len(data)} bytes; expected {expected_size}.")
     output = bytearray(len(data))
-    for block_y in range(block_height):
-        for block_x in range(block_width):
-            local_x, local_y = block_x & 15, block_y & 15
-            within_tile = (
-                (local_x & 1)
-                | (local_y & 1) << 1
-                | ((local_y >> 1) & 1) << 2
-                | ((local_x >> 1) & 1) << 3
-                | ((local_x >> 2) & 1) << 4
-                | ((local_y >> 2) & 1) << 5
-                | ((local_x >> 3) & 1) << 6
-                | ((local_y >> 3) & 1) << 7
-            )
-            source_block = ((block_y >> 4) * tiles_per_row + (block_x >> 4)) * 256 + within_tile
-            target_block = block_y * block_width + block_x
-            output[target_block * 8 : target_block * 8 + 8] = data[source_block * 8 : source_block * 8 + 8]
+    if block_width % 8 or block_height % 8:
+        raise ValueError("PS4-swizzled top mip must contain complete 8x8 block tiles.")
+
+    def morton(index: int) -> int:
+        x = y = 0
+        x_bit = y_bit = 1
+        sx = sy = 8
+        while sx > 1 or sy > 1:
+            if sx > 1:
+                x += x_bit * (index & 1)
+                index >>= 1
+                x_bit *= 2
+                sx >>= 1
+            if sy > 1:
+                y += y_bit * (index & 1)
+                index >>= 1
+                y_bit *= 2
+                sy >>= 1
+        return y * 8 + x
+
+    source_block = 0
+    for tile_y in range(block_height // 8):
+        for tile_x in range(block_width // 8):
+            for index in range(64):
+                target = morton(index)
+                target_x, target_y = target % 8, target // 8
+                x, y = tile_x * 8 + target_x, tile_y * 8 + target_y
+                target_block = y * block_width + x
+                output[target_block * block_bytes : (target_block + 1) * block_bytes] = data[
+                    source_block * block_bytes : (source_block + 1) * block_bytes
+                ]
+                source_block += 1
     return bytes(output)
 
 
@@ -819,11 +813,20 @@ def make_png_rgba(width: int, height: int, pixels: bytes) -> bytes:
     return b"\x89PNG\r\n\x1a\n" + png_chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0)) + png_chunk(b"IDAT", zlib.compress(rows, 9)) + png_chunk(b"IEND", b"")
 
 
-def convert_frostbite_textures(texture_dir: Path) -> dict[str, object]:
-    """Converts verified BC1 Frostbite RES/chunk texture pairs into DDS and PNG files."""
+def convert_frostbite_textures(texture_dir: Path, frosty_dir: Path) -> dict[str, object]:
+    """Converts supported Frostbite BC textures, including PS4-swizzled arrays, into DDS and PNG files."""
     res_root = texture_dir / "res"
     chunk_root = texture_dir / "chunks"
     output_root = texture_dir / "converted"
+    texture_formats = {
+        0x37: ("BC1_SRGB", 72, 8),
+        0x3C: ("BC3_UNORM", 77, 16),
+        0x3D: ("BC3_SRGB", 78, 16),
+        0x3F: ("BC5_UNORM", 83, 16),
+    }
+    texconv = frosty_dir / "ThirdParty" / "texconv.exe"
+    if not texconv.is_file():
+        texconv = frosty_dir / "texconv.exe"
     results: list[dict[str, object]] = []
     for res_path in res_root.rglob("*.res"):
         record: dict[str, object] = {"resource": res_path.relative_to(texture_dir).as_posix()}
@@ -832,34 +835,75 @@ def convert_frostbite_textures(texture_dir: Path) -> dict[str, object]:
             if len(header) != 184:
                 raise ValueError(f"Expected a 184-byte texture RES header, got {len(header)} bytes.")
             texture_format = struct.unpack_from("<I", header, 12)[0]
-            if texture_format != 0x37:
-                raise ValueError(f"Unsupported Frostbite texture format enum 0x{texture_format:X}; only BC1 (0x37) is verified.")
+            format_info = texture_formats.get(texture_format)
+            if format_info is None:
+                raise ValueError(f"Unsupported Frostbite texture format enum 0x{texture_format:X}.")
+            format_name, dxgi_format, block_bytes = format_info
             width, height = struct.unpack_from("<HH", header, 0x16)
-            mip_count = header[0x1E]
-            mip_sizes = list(struct.unpack_from(f"<{mip_count}I", header, 0x38))
+            texture_type = struct.unpack_from("<I", header, 8)[0]
+            flags = struct.unpack_from("<H", header, 0x14)[0]
+            array_size = struct.unpack_from("<H", header, 0x1A)[0] if texture_type == 3 else 1
+            if array_size < 1:
+                raise ValueError("Texture array has no slices.")
             chunk_id = str(uuid.UUID(bytes_le=header[0x28:0x38]))
             chunk = (chunk_root / f"{chunk_id}.chunk").read_bytes()
-            mip_layout = texture_mip_layout(width, height, [size for size in mip_sizes if size], len(chunk))
-            mips = [
-                unswizzle_bc1_mip(mip_width, mip_height, chunk[offset : offset + size])
-                for mip_width, mip_height, offset, size in mip_layout
-            ]
+            top_mip_size = max(1, (width + 3) // 4) * max(1, (height + 3) // 4) * block_bytes
+            if len(chunk) < top_mip_size * array_size:
+                raise ValueError(
+                    f"Chunk has {len(chunk)} bytes; top mip needs {top_mip_size} bytes x {array_size} slices."
+                )
+            slices: list[bytes] = []
+            for slice_index in range(array_size):
+                start = slice_index * top_mip_size
+                payload = chunk[start : start + top_mip_size]
+                if flags == 0x801:
+                    payload = unswizzle_compressed_mip(width, height, payload, block_bytes)
+                slices.append(payload)
             relative = res_path.relative_to(res_root).with_suffix("")
             dds_path = output_root / "dds" / relative.with_suffix(".dds")
-            png_path = output_root / "png" / relative.with_suffix(".png")
             dds_path.parent.mkdir(parents=True, exist_ok=True)
-            png_path.parent.mkdir(parents=True, exist_ok=True)
-            dds_path.write_bytes(make_dds_bc1(width, height, mips))
-            png_path.write_bytes(make_png_rgba(width, height, decode_bc1_rgba(width, height, mips[0])))
+            dds_path.write_bytes(make_dds_dx10(width, height, dxgi_format, slices))
+            png_paths: list[str] = []
+            png_root = output_root / "png" / relative
+            png_root.parent.mkdir(parents=True, exist_ok=True)
+            if texture_format == 0x37:
+                for slice_index, payload in enumerate(slices):
+                    png_path = png_root.with_name(
+                        f"{png_root.name}_slice_{slice_index:03d}.png" if array_size > 1 else f"{png_root.name}.png"
+                    )
+                    png_path.parent.mkdir(parents=True, exist_ok=True)
+                    png_path.write_bytes(make_png_rgba(width, height, decode_bc1_rgba(width, height, payload)))
+                    png_paths.append(png_path.relative_to(texture_dir).as_posix())
+            else:
+                if not texconv.is_file():
+                    raise ValueError(f"BC3/BC5 PNG conversion needs texconv.exe under {frosty_dir}.")
+                for slice_index, payload in enumerate(slices):
+                    png_stem = f"{png_root.name}_slice_{slice_index:03d}" if array_size > 1 else png_root.name
+                    png_path = png_root.with_name(f"{png_stem}.png")
+                    png_path.parent.mkdir(parents=True, exist_ok=True)
+                    with tempfile.TemporaryDirectory(prefix="texture_slice_", dir=output_root) as temporary_dir:
+                        input_dds = Path(temporary_dir) / f"{png_stem}.dds"
+                        input_dds.write_bytes(make_dds_dx10(width, height, dxgi_format, [payload]))
+                        conversion = subprocess.run(
+                            [str(texconv), "-nologo", "-y", "-ft", "png", "-o", str(png_path.parent), str(input_dds)],
+                            capture_output=True,
+                            text=True,
+                            check=False,
+                        )
+                        generated_png = png_path.parent / f"{png_stem}.png"
+                        if conversion.returncode != 0 or not generated_png.is_file():
+                            raise ValueError(f"texconv could not convert the texture slice: {conversion.stderr.strip()}")
+                    png_paths.append(png_path.relative_to(texture_dir).as_posix())
             record.update(
                 {
                     "chunk_id": chunk_id,
-                    "format": "BC1/DXT1",
+                    "format": format_name,
                     "width": width,
                     "height": height,
-                    "mip_count": len(mips),
+                    "mip_count": 1,
+                    "array_size": array_size,
                     "dds": dds_path.relative_to(texture_dir).as_posix(),
-                    "png": png_path.relative_to(texture_dir).as_posix(),
+                    "png": png_paths,
                 }
             )
         except (OSError, ValueError) as error:
@@ -1365,7 +1409,7 @@ def main() -> None:
             f"({bundle_result['failed']} failed) from {bundle_result['bundle']['name']} to {arguments.extract_dir}."
         )
     if arguments.convert_textures is not None:
-        texture_result = convert_frostbite_textures(arguments.convert_textures)
+        texture_result = convert_frostbite_textures(arguments.convert_textures, arguments.frosty_dir)
         print(
             f"Converted {texture_result['converted']} textures to DDS and PNG "
             f"({texture_result['failed']} failed) in {arguments.convert_textures}."
